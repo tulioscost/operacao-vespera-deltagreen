@@ -169,12 +169,68 @@ async function makeTables(data,dir,counts){
     });counts.tables++;
   }
 }
+
+/** Reaplicar todos os backgrounds do módulo; não toca em cenas alheias. */
+async function openMapBackgrounds(){
+  if(!game.user?.isGM){ui.notifications.warn('Somente o Handler pode editar os mapas.');return;}
+  if(game.system?.id!=='deltagreen'){ui.notifications.warn('Requer um mundo Delta Green.');return;}
+  const data=await loadData();
+  const targets=data.scenes.map(entry=>({entry,scene:fromKey(game.scenes,entry.id)})).filter(x=>x.scene);
+  if(!targets.length){ui.notifications.warn('Importe primeiro as cenas da Operação Véspera.');return;}
+  const changed=targets.filter(({entry,scene})=>scene.background?.src!==asset(entry.image));
+  const ok=await foundry.applications.api.DialogV2.confirm({
+    window:{title:'VÉSPERA — Aplicar mapas e fog'},modal:true,rejectClose:false,
+    content:`<p><strong>${targets.length}</strong> cenas identificadas; <strong>${changed.length}</strong> background(s) diferentes do mapa oficial.</p>
+      <p>A macro aplicará os mapas da aventura, visão por tokens e fog individual sem apagar tokens, paredes, notas ou exploração anterior.</p><p>Continuar?</p>`,
+    yes:{label:'Aplicar mapas'},no:{label:'Cancelar'}
+  });
+  if(!ok)return;
+  let updated=0,failed=[];
+  for(const {entry,scene} of targets){
+    try{if(await updateSceneSettings(scene,entry,{force:true}))updated++;}
+    catch(err){console.error(`[VÉSPERA] Erro na cena ${scene.name}`,err);failed.push(scene.name);}
+  }
+  if(failed.length)ui.notifications.error(`VÉSPERA: falha em ${failed.length} cena(s): ${failed.join(', ')}`);
+  else ui.notifications.info(`VÉSPERA: ${updated} cena(s) atualizada(s); ${targets.length-updated} já estavam corretas.`);
+  return {updated,checked:targets.length,failed};
+}
+/** Orientação de idioma com troca explícita, nunca automática. */
+async function checkLanguage(){
+  const current=game.i18n?.lang||'desconhecido';
+  if(current==='pt-BR'){
+    ui.notifications.info('VÉSPERA: idioma pt-BR já está ativo. Reabra a ficha; se necessário recarregue o Foundry.');
+    return;
+  }
+  const supported=CONFIG?.supportedLanguages && Object.hasOwn(CONFIG.supportedLanguages,'pt-BR');
+  const ok=await foundry.applications.api.DialogV2.confirm({
+    window:{title:'VÉSPERA — Idioma das fichas'},modal:true,rejectClose:false,
+    content:`<p>Idioma atual: <strong>${current}</strong>.</p><p>As fichas são traduzidas quando o Foundry está configurado para <strong>Português (Brasil)</strong>.</p>
+      <p>${supported?'Português (Brasil) está disponível.':'Se a opção pt-BR estiver ausente, instale e ative o módulo Translation [Core]: Português Brasileiro.'}</p>
+      <p>Deseja mudar a preferência deste cliente para pt-BR? O Foundry poderá solicitar recarga.</p>`,
+    yes:{label:'Usar português (Brasil)'},no:{label:'Agora não'}
+  });
+  if(!ok)return;
+  try{
+    await game.settings.set('core','language','pt-BR');
+    ui.notifications.info('Preferência de idioma atualizada. Recarregue a interface e reabra as fichas.');
+  }catch(err){
+    console.warn('[VÉSPERA] Alteração de idioma não permitida neste cliente:',err);
+    ui.notifications.warn('Selecione Português (Brasil) em Game Settings → Configure Settings → Language Preference.');
+  }
+}
+
 async function makeMacro(counts){
-  if(fromKey(game.macros,'importar-novamente'))return;
-  await Macro.create({name:'VÉSPERA — Reabrir importador',type:'script',
-    img:'icons/svg/book.svg',command:`game.modules.get('${MOD}').api.openImporter();`,
-    flags:modFlag('importar-novamente'),ownership:{default:0}
-  });counts.macros++;
+  const macros=[
+    {key:'importar-novamente',name:'VÉSPERA — Reabrir importador',image:'icons/svg/book.svg',command:`game.modules.get('${MOD}').api.openImporter();`},
+    {key:'aplicar-mapas-background',name:'VÉSPERA — Aplicar mapas e fog',image:'icons/svg/direction.svg',command:`game.modules.get('${MOD}').api.openMapBackgrounds();`},
+    {key:'configurar-idioma-br',name:'VÉSPERA — Idioma português (Brasil)',image:'icons/svg/scroll.svg',command:`game.modules.get('${MOD}').api.checkLanguage();`}
+  ];
+  for(const item of macros){
+    if(fromKey(game.macros,item.key))continue;
+    await Macro.create({name:item.name,type:'script',img:item.image,command:item.command,
+      flags:modFlag(item.key),ownership:{default:0}});
+    counts.macros++;
+  }
 }
 async function importAll(){
   if(!game.user?.isGM)throw Error('Somente o Handler pode importar.');
@@ -226,11 +282,14 @@ async function openImporter(){
 }
 Hooks.once('ready',async()=>{
   const mod=game.modules.get(MOD);
-  if(mod)mod.api={importAll,openImporter,repairScenes};
+  if(mod)mod.api={importAll,openImporter,repairScenes,openMapBackgrounds,checkLanguage};
   if(!game.user?.isGM||game.system?.id!=='deltagreen')return;
   try{
     // Migra inclusive campanhas importadas antes desta versão, sem recriar atores.
     await repairScenes();
+    // Disponibiliza as novas macros também para mundos importados em versões antigas.
+    await makeMacro({macros:0});
+    if(game.i18n?.lang!=='pt-BR')ui.notifications.warn('VÉSPERA: as fichas estão em inglês? Selecione Português (Brasil) em Configurar Configurações → Idioma; use a macro VÉSPERA — Idioma português (Brasil).');
     if(!game.settings.get(MOD,'imported'))await openImporter();
   }catch(error){console.warn('[VÉSPERA] Inicialização/migração:',error);}
 });

@@ -60,3 +60,13 @@ A release 1.0.2 foi produzida por um workflow antigo que não incluiu `lang/` no
 Se o Foundry informar `PACKAGE.InstallFailed`, abra a release e confirme que `module.json` e `operacao-vespera-deltagreen.zip` estão publicados; teste a URL do manifesto pelo navegador e examine o console do Foundry e os logs do servidor para o código de erro detalhado. O aviso genérico, sozinho, não identifica a causa.
 
 Instalação por URL: `https://github.com/tulioscost/operacao-vespera-deltagreen/releases/latest/download/module.json`.
+
+
+## Atualização v1.0.6 — fundos das cenas e idioma das fichas
+
+- Com o módulo ativo, a aba **Macros** recebe a macro `VÉSPERA — Aplicar mapas e fog` automaticamente (inclusive em mundos previamente importados). Ela identifica **somente** as cenas registradas pelo módulo, pede confirmação, usa `assets/maps/*.webp` como `background.src`, habilita visão por tokens e fog individual. Não apaga exploração, tokens nem paredes.
+- `VÉSPERA — Idioma português (Brasil)` verifica o idioma atual e pode selecionar pt-BR mediante confirmação. Para traduzir os textos da ficha, também confirme **Game Settings > Configure Settings > Language Preference > Português (Brasil)** e recarregue a página.
+- A tradução incluída em `lang/pt-BR.json` complementa as chaves ainda não traduzidas pelo sistema Delta Green. Se a interface do Foundry permanecer em inglês, instale a tradução **Translation [Core]: Português Brasileiro** (https://foundryvtt.com/packages/pt-BR) e selecione pt-BR.
+- O comando JavaScript autossuficiente em `scripts/macro-aplicar-mapas.js` pode ser copiado para uma macro do tipo **Script** em versões anteriores do módulo, sem precisar atualizar a release.
+
+**Importante**: fog de exploração com visão por tokens não substitui paredes e fontes de iluminação; interiores exigem paredes configuradas no VTT para impedir que personagens vejam através delas.

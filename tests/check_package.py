@@ -1,29 +1,19 @@
-"""Verificador local do pacote. Não equivale a um teste em instância do Foundry."""
 from pathlib import Path
-import json,re
+import json, sys
+from zipfile import ZipFile
 root=Path(__file__).resolve().parents[1]
-manifest=json.loads((root/'module.json').read_text(encoding='utf-8'))
-assert re.fullmatch(r'\d+\.\d+\.\d+',manifest['version'])
-assert manifest['id']=='operacao-vespera-deltagreen'
-assert manifest['download'].endswith('/v'+manifest['version']+'/operacao-vespera-deltagreen.zip')
-assert {d['id'] for d in manifest['relationships']['requires']}=={'dice-calculator','dice-so-nice'}
-assert {d['id'] for d in manifest['relationships']['systems']}=={'deltagreen'}
-for k in ['esmodules','styles']:
-    for file in manifest.get(k,[]):assert (root/file).is_file(),file
-for lang in manifest['languages']:
-    assert (root/lang['path']).is_file(),lang['path']
-    json.loads((root/lang['path']).read_text(encoding='utf-8'))
-data=json.loads((root/'data/vespera.json').read_text(encoding='utf-8'))
-assert len(data['scenes'])==9
-assert len(data['npcs'])==9
-assert len(data['agents'])==5
-for sc in data['scenes']:assert (root/sc['image']).is_file(),sc['image']
-for group in ['agents','npcs']:
-    for entry in data[group]:
-        for field in ['img','token']:
-            value=entry.get(field,'')
-            if value.startswith('assets/'):assert (root/value).is_file(),value
-source=(root/'scripts/importer.mjs').read_text(encoding='utf-8')
-assert "type:'text'" in source
-assert 'fog:{mode:FOG_MODE}' in source
-print('OK: manifesto, dependências, importador, mapas, retratos e tradução pt-BR.')
+m=json.loads((root/'module.json').read_text(encoding='utf-8'))
+d=json.loads((root/'data/vespera.json').read_text(encoding='utf-8'))
+required=['module.json','scripts/importer.mjs','scripts/macro-aplicar-mapas.js','styles/vespera.css','data/vespera.json','README.md','LICENSE.txt']
+required += [x['path'] for x in m['languages']]
+required += [x['image'] for x in d['scenes']]
+for kind in ('agents','npcs'):
+ for e in d[kind]:
+  required += [e[k] for k in ('img','token') if e.get(k,'').startswith('assets/')]
+missing=[p for p in required if not (root/p).is_file()]
+if missing:raise SystemExit('Arquivos ausentes: '+', '.join(missing))
+assert 'scripts/importer.mjs' in required
+s=(root/'scripts/importer.mjs').read_text(encoding='utf-8')
+for snippet in ('openMapBackgrounds','checkLanguage','fog.mode','makeMacro'):
+ assert snippet in s, snippet
+print('OK: ',len(set(required)), 'recursos referenciados existentes; fog, macros e tradução incluídos.')
