@@ -1,45 +1,28 @@
-# OPERAÇÃO VÉSPERA — PUBLICAÇÃO NO GITHUB
+# Operação Véspera — atualização corretiva v1.0.1
 
-**Repositório planejado:** `tulioscost/operacao-vespera-deltagreen`.
-**Aviso:** os links do GitHub só ficarão acessíveis depois que você criar o repositório e publicar a release.
+Esta versão corrige o erro de validação dos resultados da RollTable no Foundry VTT 14.
 
-## Publicação com GitHub Actions (recomendada)
+## Atualização recomendada (GitHub Actions)
 
-1. Entre em https://github.com/new com a conta `tulioscost`.
-2. Nomeie o repositório `operacao-vespera-deltagreen`, selecione **Public** e crie-o (não inicialize com README para facilitar o envio).
-3. Extraia `Operacao_Vespera_GitHub_Repositorio_v1.0.0.zip`. Envie **todo o conteúdo da pasta**, incluindo `.github`, para a **raiz** do repositório. O `module.json` deve aparecer na página inicial do repositório, não dentro de outra pasta.
-4. Em **Actions**, abra **Publicar modulo no Foundry**, clique em **Run workflow**, selecione `main`, informe `v1.0.0` e execute. A action criará uma release e anexará `module.json` e `operacao-vespera-deltagreen.zip`.
-5. Confira em **Releases** que os dois arquivos existem.
-6. No Foundry VTT (tela inicial, **Add-on Modules > Install Module**), cole a URL do manifesto e instale:
+1. Na branch `main` do repositório `tulioscost/operacao-vespera-deltagreen`, substitua `scripts/importer.mjs` pela versão corrigida.
+2. Opcionalmente, atualize `module.json` para v1.0.1 e `.github/workflows/publicar-foundry.yml` para que o padrão seja `v1.0.1`.
+3. Abra `Actions > Publicar modulo no Foundry > Run workflow` e informe a nova tag `v1.0.1`.
+4. Após a execução, confira que a release `v1.0.1` contém `module.json` e `operacao-vespera-deltagreen.zip`.
+5. Em Foundry Setup > Add-on Modules, verifique as atualizações e atualize o módulo. Reinicie o mundo.
+6. O importador abre automaticamente se a importação anterior ficou incompleta. Caso necessário, use o console do navegador (F12):
 
-   `https://github.com/tulioscost/operacao-vespera-deltagreen/releases/latest/download/module.json`
+   ```js
+   game.modules.get('operacao-vespera-deltagreen').api.openImporter()
+   ```
 
-7. Abra um mundo **Delta Green**, habilite **Operação Véspera** em **Gerenciar Módulos** e clique em **Importar conteúdo**.
+O módulo verifica flags de seus próprios documentos para completar itens faltantes sem duplicar os anteriores. Não é necessário excluir o mundo.
 
-## Instalação via publicação manual (sem Actions)
+## URL de instalação/atualização
 
-1. Crie o repositório público como acima.
-2. Envie os arquivos da pasta `Repositorio` ou inicialize o repositório com um README.
-3. Em **Releases > Draft a new release**, crie a tag `v1.0.0`, escolha o ramo `main`, e anexe **ambos** os arquivos presentes em `Arquivos_para_release`: `module.json` e `operacao-vespera-deltagreen.zip`.
-4. Publique (não marque como pre-release) e instale pelo mesmo URL de manifesto.
+`https://github.com/tulioscost/operacao-vespera-deltagreen/releases/latest/download/module.json`
 
-## URLs de instalação (depois da publicação)
+## Instalação manual alternativa
 
-- **Manifesto estável:** `https://github.com/tulioscost/operacao-vespera-deltagreen/releases/latest/download/module.json`
-- **Download ZIP v1.0.0:** `https://github.com/tulioscost/operacao-vespera-deltagreen/releases/download/v1.0.0/operacao-vespera-deltagreen.zip`
-- **Página do repositório:** `https://github.com/tulioscost/operacao-vespera-deltagreen`
+O arquivo `operacao-vespera-deltagreen-v1.0.1.zip` deste pacote contém os arquivos do módulo com `module.json` na raiz. Para publicar manualmente, crie uma release GitHub `v1.0.1` e anexe **dois arquivos**: o ZIP, renomeado para `operacao-vespera-deltagreen.zip`, e o `module.json` atualizado.
 
-## Atualizações
-
-- Atualize o conteúdo no ramo `main`.
-- Em **Actions > Publicar modulo no Foundry > Run workflow**, escolha a nova versão, por exemplo `v1.0.1`.
-- O Foundry detectará a nova versão no mesmo URL estável do manifesto; verifique atualizações em **Add-on Modules**.
-- Não publique novamente com a mesma tag: versões já lançadas devem permanecer imutáveis para que atualizações funcionem corretamente.
-
-## Pontos de atenção
-
-- Um arquivo ZIP adicionado como **código-fonte** ao repositório não instala automaticamente o módulo. A release precisa conter um `module.json` baixável e o ZIP real do módulo.
-- O ZIP usado no Foundry deve conter `module.json` diretamente na sua raiz, ao lado de `assets/`, `data/`, `scripts/` e `styles/`.
-- O repositório precisa ser **público** para instalação por URL sem autenticação.
-- GitHub Actions pode precisar da permissão **Settings > Actions > General > Workflow permissions > Read and write permissions** se aparecer erro HTTP 403 ao publicar.
-- O módulo exige Foundry VTT v14 e sistema `deltagreen` v2.0.1. Teste em mundo de homologação e faça backup antes de importar.
+**Compatibilidade:** Foundry VTT 14 e Delta Green 2.0.1. Faça backup do mundo antes de atualizar módulos.

@@ -120,7 +120,8 @@ async function makeTables(data,dir,counts){
     await RollTable.create({
       name:table.name,folder:dir.id,formula:table.formula,replacement:true,displayRoll:true,
       flags:modFlag(table.key),results:table.entries.map((v,i)=>({
-        type:0,text:v,weight:1,range:[i+1,i+1],drawn:false,img:'icons/svg/d20-black.svg'
+        type:'text',name:`Sinal ${i+1} — Permanência`,description:`<p>${v}</p>`,
+        weight:1,range:[i+1,i+1],drawn:false,img:'icons/svg/d20-black.svg'
       }))
     });counts.tables++;
   }
