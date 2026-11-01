@@ -51,3 +51,12 @@ Módulo de aventura autoral não oficial. Não inclui obras, texto de regras ou 
 - O sistema **Delta Green** já distribui pt-BR; o arquivo `lang/pt-BR.json` neste módulo **complementa 193 chaves ausentes** na tradução do sistema, sem sobrescrever seus arquivos. Em **Configuração → Configurações Básicas → Idioma**, selecione **Português (Brasil)** e recarregue a página. A tradução pode mudar se uma versão futura do sistema alterar suas chaves.
 - **Fog ativo não significa paredes automáticas**: o campo de visão seguirá os tokens dos jogadores; adicione paredes/portas/iluminação se desejar impedir a visão através de ambientes fechados. Jogadores precisam controlar um token com visão habilitada; sem isso, a cena pode aparecer escura/oculta.
 
+
+
+## Correção do instalador — v1.0.3
+
+A release 1.0.2 foi produzida por um workflow antigo que não incluiu `lang/` no ZIP. A versão 1.0.3 corrige isso e executa verificações de integridade e caminhos antes de publicar. A dependência do sistema foi declarada em `relationships.systems`; Dice Tray e Dice So Nice continuam obrigatórios em `relationships.requires`.
+
+Se o Foundry informar `PACKAGE.InstallFailed`, abra a release e confirme que `module.json` e `operacao-vespera-deltagreen.zip` estão publicados; teste a URL do manifesto pelo navegador e examine o console do Foundry e os logs do servidor para o código de erro detalhado. O aviso genérico, sozinho, não identifica a causa.
+
+Instalação por URL: `https://github.com/tulioscost/operacao-vespera-deltagreen/releases/latest/download/module.json`.
