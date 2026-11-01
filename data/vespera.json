@@ -1,0 +1,2538 @@
+{
+  "version": "1.0.0",
+  "moduleId": "operacao-vespera-deltagreen",
+  "scenes": [
+    {
+      "id": "00_regiao_ashford",
+      "name": "00 — Região de Ashford",
+      "image": "assets/maps/00_regiao_ashford.webp",
+      "ref": "assets/maps/00_regiao_ashford_esquematico.webp",
+      "width": 1448,
+      "height": 1086,
+      "grid": false,
+      "notes": "Mapa esquematico sem escala: 1 clinica; 2 igreja; 3 centro da cidade; 4 acidente na rodovia; 5 fazenda Hale (silo no terreno)",
+      "points": []
+    },
+    {
+      "id": "01_estrada_acidente",
+      "name": "01 — Estrada do acidente",
+      "image": "assets/maps/01_estrada_acidente.webp",
+      "ref": "assets/maps/01_estrada_acidente_esquematico.webp",
+      "width": 1536,
+      "height": 1024,
+      "grid": true,
+      "notes": "Acidente: 1 vitrificacao; 2 onibus; 3 caminhao; 4 cerca e testemunhas",
+      "points": [
+        [
+          0.51,
+          0.5,
+          "Impacto vitrificado"
+        ],
+        [
+          0.38,
+          0.44,
+          "Ônibus escolar"
+        ],
+        [
+          0.66,
+          0.49,
+          "Caminhão"
+        ],
+        [
+          0.2,
+          0.3,
+          "Testemunhas"
+        ]
+      ]
+    },
+    {
+      "id": "02_clinica",
+      "name": "02 — Clínica de Ashford",
+      "image": "assets/maps/02_clinica.webp",
+      "ref": "assets/maps/02_clinica_esquematico.webp",
+      "width": 1536,
+      "height": 1024,
+      "grid": true,
+      "notes": "1 recepcao; 2 exames; 3 radiologia; 4 espera; 5 laboratorio; 6 prontuarios",
+      "points": [
+        [
+          0.21,
+          0.26,
+          "Recepção"
+        ],
+        [
+          0.47,
+          0.28,
+          "Exames"
+        ],
+        [
+          0.78,
+          0.23,
+          "Radiologia"
+        ],
+        [
+          0.22,
+          0.66,
+          "Espera"
+        ],
+        [
+          0.53,
+          0.69,
+          "Laboratório"
+        ],
+        [
+          0.83,
+          0.71,
+          "Arquivos"
+        ]
+      ]
+    },
+    {
+      "id": "03_igreja",
+      "name": "03 — Igreja de Ashford",
+      "image": "assets/maps/03_igreja.webp",
+      "ref": "assets/maps/03_igreja_esquematico.webp",
+      "width": 1536,
+      "height": 1024,
+      "grid": true,
+      "notes": "1 altar; 2 nave e fieis; 3 gabinete do pastor; 4 sacristia; 5 entrada",
+      "points": [
+        [
+          0.42,
+          0.2,
+          "Altar"
+        ],
+        [
+          0.39,
+          0.52,
+          "Bancos"
+        ],
+        [
+          0.78,
+          0.25,
+          "Gabinete"
+        ],
+        [
+          0.78,
+          0.66,
+          "Sala de apoio"
+        ],
+        [
+          0.42,
+          0.86,
+          "Entrada"
+        ]
+      ]
+    },
+    {
+      "id": "04_fazenda_exterior",
+      "name": "04 — Fazenda Hale",
+      "image": "assets/maps/04_fazenda_exterior.webp",
+      "ref": "assets/maps/04_fazenda_exterior_esquematico.webp",
+      "width": 1536,
+      "height": 1024,
+      "grid": true,
+      "notes": "1 casa principal; 2 celeiro; 3 silo antigo; 4 curral; 5 reservatorio; 6 entrada lacrada do subsolo",
+      "points": [
+        [
+          0.52,
+          0.6,
+          "Casa"
+        ],
+        [
+          0.84,
+          0.17,
+          "Celeiro"
+        ],
+        [
+          0.82,
+          0.65,
+          "Silo"
+        ],
+        [
+          0.15,
+          0.57,
+          "Curral"
+        ],
+        [
+          0.59,
+          0.13,
+          "Reservatório"
+        ],
+        [
+          0.74,
+          0.6,
+          "Acesso lacrado"
+        ]
+      ]
+    },
+    {
+      "id": "05_casa_hale_interior",
+      "name": "05 — Casa Hale",
+      "image": "assets/maps/05_casa_hale_interior.webp",
+      "ref": "assets/maps/05_casa_hale_interior_esquematico.webp",
+      "width": 1536,
+      "height": 1024,
+      "grid": true,
+      "notes": "1 sala e fotos; 2 cozinha; 3 quarto dos pais; 4 quarto de Isaac; 5 banheiro; 6 entrada frontal",
+      "points": [
+        [
+          0.25,
+          0.32,
+          "Sala"
+        ],
+        [
+          0.75,
+          0.26,
+          "Cozinha"
+        ],
+        [
+          0.22,
+          0.67,
+          "Quarto dos pais"
+        ],
+        [
+          0.56,
+          0.67,
+          "Quarto de Isaac"
+        ],
+        [
+          0.84,
+          0.67,
+          "Banheiro"
+        ],
+        [
+          0.52,
+          0.89,
+          "Entrada"
+        ]
+      ]
+    },
+    {
+      "id": "06_celeiro",
+      "name": "06 — Celeiro dos Hale",
+      "image": "assets/maps/06_celeiro.webp",
+      "ref": "assets/maps/06_celeiro_esquematico.webp",
+      "width": 1536,
+      "height": 1024,
+      "grid": true,
+      "notes": "1 baias; 2 ferramentas; 3 trator; 4 fenos e suprimentos; 5 portao",
+      "points": [
+        [
+          0.17,
+          0.27,
+          "Baias"
+        ],
+        [
+          0.43,
+          0.18,
+          "Oficina"
+        ],
+        [
+          0.52,
+          0.56,
+          "Mesa de inspeção"
+        ],
+        [
+          0.82,
+          0.61,
+          "Feno"
+        ],
+        [
+          0.48,
+          0.78,
+          "Portão"
+        ]
+      ]
+    },
+    {
+      "id": "07_silo_piso_superior",
+      "name": "07 — Silo antigo",
+      "image": "assets/maps/07_silo_piso_superior.webp",
+      "ref": "assets/maps/07_silo_piso_superior_esquematico.webp",
+      "width": 1411,
+      "height": 1115,
+      "grid": true,
+      "notes": "1 acesso subterraneo; 2 entrada de servico; 3 materiais e equipamentos",
+      "points": [
+        [
+          0.48,
+          0.48,
+          "Escada central"
+        ],
+        [
+          0.83,
+          0.45,
+          "Passarela"
+        ],
+        [
+          0.31,
+          0.23,
+          "Suprimentos"
+        ]
+      ]
+    },
+    {
+      "id": "08_subsolo_capsula",
+      "name": "08 — Câmara da Permanência",
+      "image": "assets/maps/08_subsolo_capsula.webp",
+      "ref": "assets/maps/08_subsolo_capsula_esquematico.webp",
+      "width": 1536,
+      "height": 1024,
+      "grid": true,
+      "notes": "1 escada do silo; 2 antecamara; 3-5 tres ancoras nervosas; 6 capsula-útero viva",
+      "points": [
+        [
+          0.1,
+          0.46,
+          "Escada"
+        ],
+        [
+          0.24,
+          0.45,
+          "Antecâmara"
+        ],
+        [
+          0.48,
+          0.23,
+          "Âncora A"
+        ],
+        [
+          0.84,
+          0.46,
+          "Âncora B"
+        ],
+        [
+          0.48,
+          0.72,
+          "Âncora C"
+        ],
+        [
+          0.65,
+          0.48,
+          "Cápsula"
+        ]
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "key": "npc-01",
+      "name": "Isaac Hale",
+      "type": "unnatural",
+      "img": "assets/portraits/01_isaac_hale.webp",
+      "token": "assets/tokens/01_isaac_hale.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 24
+          },
+          "con": {
+            "value": 20
+          },
+          "dex": {
+            "value": 16
+          },
+          "int": {
+            "value": 13
+          },
+          "pow": {
+            "value": 18
+          },
+          "cha": {
+            "value": 14
+          }
+        },
+        "health": {
+          "value": 22,
+          "max": 22
+        },
+        "wp": {
+          "value": 18,
+          "max": 18
+        },
+        "skills": {
+          "alertness": {
+            "proficiency": 80
+          },
+          "athletics": {
+            "proficiency": 85
+          },
+          "unarmed_combat": {
+            "proficiency": 65
+          },
+          "persuade": {
+            "proficiency": 45
+          },
+          "humint": {
+            "proficiency": 40
+          },
+          "search": {
+            "proficiency": 45
+          }
+        },
+        "typedSkills": {},
+        "shortDescription": "14 anos • estudante • alvo central • consciência humana em conflito",
+        "notes": "<h2>ISAAC HALE</h2><p><em>14 anos • estudante • alvo central • consciência humana em conflito</em></p>\n<h3>Interpretação</h3><p>Ama a mãe e tem pavor de ferir pessoas. Fala baixo, evita conflitos e pede desculpas por coisas que não fez.</p>\n<h3>Combate e reações</h3><ul><li>Golpe contido: 65%, 1D4 de dano. Golpe sem contenção: 65%, 1D10+3 de dano.</li><li>Pulso térmico ocular: 55%, 2D8 de dano, até 20 m; força nova alteração visível.</li><li>Voo gravitacional: deslocamento de 15 m por turno, sem rolagem em condições simples.</li></ul>\n<h3>Habilidades</h3><ul><li>Enquanto ligado à cápsula, armas convencionais causam no máximo 1 PV por ataque; efeitos letais não o matam automaticamente.</li><li>Regenera 1D4 PV por turno conectado à cápsula, até seu máximo.</li><li>Ao curar uma vítima, ela recebe tecido do Coro e inicia progressão de assimilação.</li></ul>\n<h3>Pistas</h3><ul><li>Sua manta vermelha antiga, a voz de Evelyn e a confiança dos agentes favorecem sua resistência ao comando alienígena.</li><li>Sangra pelo nariz após manifestações; sangue e tecidos recuperados têm arquitetura celular instável.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>Não deseja destruir a humanidade. Crê estar salvando-a; a cápsula se aproveita de sua empatia. No estágio terminal, corpo e voz tornam-se instrumentos da transmissão.</p>\n<h3>Estágios e SAN</h3><p>FASE II (21h14, se não contido): FOR 30, CON 25, DES 18, POD 20, PV 28, VON 20; dano de golpe 2D10+3; surgem auréola óssea e transmissor torácico.</p><p>Presenciar a abertura do tórax: SAN 1D4/1D8. Ouvi-lo pedir ajuda durante a assimilação: SAN 0/1D4 (Desamparo).</p>\n<p><strong>Perícias de referência:</strong> Prontidão 80%; Atletismo 85%; Combate Desarmado 65%; Persuasão 45%; HUMINT 40%; Busca 45%; Sobrenatural: não aplicável.</p>",
+        "sanity": {
+          "successLoss": "1",
+          "failedLoss": "1D6",
+          "notes": "Presenciar a abertura do tórax: SAN 1D4/1D8. Ouvi-lo pedir ajuda durante a assimilação: SAN 0/1D4 (Desamparo)."
+        }
+      },
+      "items": [
+        {
+          "name": "Golpe não contido",
+          "type": "weapon",
+          "system": {
+            "description": "Dano de criatura; ataque 65% e dano 1D10+3.",
+            "skill": "unarmed_combat",
+            "damage": "1D10+3",
+            "range": "Engaged"
+          }
+        },
+        {
+          "name": "Pulso térmico ocular",
+          "type": "weapon",
+          "system": {
+            "description": "Ataque especial: 55%; ao utilizá-lo, alterações biológicas visíveis se intensificam.",
+            "skill": "custom",
+            "customSkillTarget": 55,
+            "damage": "2D8",
+            "range": "20M"
+          }
+        }
+      ]
+    },
+    {
+      "key": "npc-02",
+      "name": "Thomas Hale",
+      "type": "npc",
+      "img": "assets/portraits/02_thomas_hale.webp",
+      "token": "assets/tokens/02_thomas_hale.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 12
+          },
+          "con": {
+            "value": 12
+          },
+          "dex": {
+            "value": 10
+          },
+          "int": {
+            "value": 11
+          },
+          "pow": {
+            "value": 13
+          },
+          "cha": {
+            "value": 12
+          }
+        },
+        "health": {
+          "value": 12,
+          "max": 12
+        },
+        "wp": {
+          "value": 13,
+          "max": 13
+        },
+        "skills": {
+          "survival": {
+            "proficiency": 65
+          },
+          "heavy_machiner": {
+            "proficiency": 60
+          },
+          "persuade": {
+            "proficiency": 35
+          },
+          "firearms": {
+            "proficiency": 50
+          },
+          "alertness": {
+            "proficiency": 45
+          },
+          "drive": {
+            "proficiency": 50
+          },
+          "search": {
+            "proficiency": 40
+          }
+        },
+        "typedSkills": {
+          "0_craft_mec_nica": {
+            "group": "craft",
+            "label": "Mecânica",
+            "proficiency": 55,
+            "failure": false
+          }
+        },
+        "shortDescription": "53 anos • fazendeiro • pai adotivo • guardião da cápsula",
+        "notes": "<h2>THOMAS HALE</h2><p><em>53 anos • fazendeiro • pai adotivo • guardião da cápsula</em></p>\n<h3>Interpretação</h3><p>Protetor, reservado, exausto. Mantém um rifle trancado e evita autoridades por medo de perder Isaac.</p>\n<h3>Combate e reações</h3><ul><li>Rifle de caça: Armas de Fogo 50%, dano 1D12.</li><li>Briga ou contenção: Combate Desarmado 40%, dano 1D4−1.</li></ul>\n<h3>Habilidades</h3><ul><li>Sabe abrir a câmara sob o silo sem explosivos.</li><li>Pode revelar que a cápsula ficou quente nos dias anteriores ao aniversário.</li></ul>\n<h3>Pistas</h3><ul><li>Viés de proteção: esconde a existência do útero; pode ceder se os agentes enfatizarem que há risco para Isaac.</li><li>Possui chaves do silo, registros de manutenção e testemunhou o objeto em 2012.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>Há anos Thomas pensa em destruir a cápsula, mas nunca encontrou coragem. Ao ver Isaac perder a forma humana, pode colaborar com o grupo.</p>\n<h3>Estágios e SAN</h3><p>Se Evelyn estiver ameaçada, Thomas tentará intervir, inclusive contra agentes. Se Isaac pedir auxílio, abandona qualquer oposição.</p><p>Reação humana diante do horror; testes de SAN conforme exposição.</p>\n<p><strong>Perícias de referência:</strong> Sobrevivência 65%; Maquinário Pesado 60%; Ofício (Mecânica) 55%; Persuasão 35%; Armas de Fogo 50%; Prontidão 45%; Direção 50%; Busca 40%.</p>",
+        "sanity": {
+          "value": 65,
+          "max": 99,
+          "currentBreakingPoint": 52
+        }
+      },
+      "items": [
+        {
+          "name": "Rifle de caça",
+          "type": "weapon",
+          "system": {
+            "description": "Rifle rural.",
+            "skill": "firearms",
+            "damage": "1D12",
+            "range": "150M"
+          }
+        }
+      ]
+    },
+    {
+      "key": "npc-03",
+      "name": "Evelyn Hale",
+      "type": "npc",
+      "img": "assets/portraits/03_evelyn_hale.webp",
+      "token": "assets/tokens/03_evelyn_hale.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 9
+          },
+          "con": {
+            "value": 11
+          },
+          "dex": {
+            "value": 11
+          },
+          "int": {
+            "value": 12
+          },
+          "pow": {
+            "value": 15
+          },
+          "cha": {
+            "value": 14
+          }
+        },
+        "health": {
+          "value": 10,
+          "max": 10
+        },
+        "wp": {
+          "value": 15,
+          "max": 15
+        },
+        "skills": {
+          "persuade": {
+            "proficiency": 70
+          },
+          "humint": {
+            "proficiency": 60
+          },
+          "first_aid": {
+            "proficiency": 45
+          },
+          "psychotherapy": {
+            "proficiency": 45
+          },
+          "alertness": {
+            "proficiency": 50
+          },
+          "search": {
+            "proficiency": 45
+          },
+          "survival": {
+            "proficiency": 35
+          }
+        },
+        "typedSkills": {},
+        "shortDescription": "49 anos • fazendeira • mãe adotiva • elo emocional de Isaac",
+        "notes": "<h2>EVELYN HALE</h2><p><em>49 anos • fazendeira • mãe adotiva • elo emocional de Isaac</em></p>\n<h3>Interpretação</h3><p>Afetuosa, firme e profundamente marcada pelo luto de Nathan. Não abandona Isaac, mesmo diante de sua transformação.</p>\n<h3>Combate e reações</h3><ul><li>Tenta desescalar o conflito; Combate Desarmado 40%, dano 1D4−1.</li></ul>\n<h3>Habilidades</h3><ul><li>A presença de Evelyn oferece contexto favorável ao teste de POD de Isaac para resistir à transmissão.</li><li>A manta vermelha costurada por ela pode desencadear lembranças de infância.</li></ul>\n<h3>Pistas</h3><ul><li>Reconta o encontro em 2012: bebê, cordão umbilical branco e a primeira palavra “Mamãe”.</li><li>Guarda álbuns, exames pediátricos e desenhos infantis.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>Evelyn teme ter tomado Isaac como substituto do filho falecido, mas o reconhece como pessoa própria. É capaz de lhe dizer que não precisa salvar ninguém para merecer amor.</p>\n<h3>Estágios e SAN</h3><p>Caso seja ferida, Isaac pode perder o controle. Caso converse com ele pessoalmente, a ruptura do sinal torna-se viável.</p><p>Ver o corpo do filho se abrir: SAN 1D4/1D8 (Desamparo, sugestão).</p>\n<p><strong>Perícias de referência:</strong> Persuasão 70%; HUMINT 60%; Primeiros Socorros 45%; Psicoterapia 45%; Prontidão 50%; Busca 45%; Sobrevivência 35%.</p>",
+        "sanity": {
+          "value": 75,
+          "max": 99,
+          "currentBreakingPoint": 60
+        }
+      },
+      "items": []
+    },
+    {
+      "key": "npc-04",
+      "name": "Dra. Miriam Shaw",
+      "type": "npc",
+      "img": "assets/portraits/04_dra_miriam_shaw.webp",
+      "token": "assets/tokens/04_dra_miriam_shaw.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 9
+          },
+          "con": {
+            "value": 10
+          },
+          "dex": {
+            "value": 12
+          },
+          "int": {
+            "value": 15
+          },
+          "pow": {
+            "value": 13
+          },
+          "cha": {
+            "value": 11
+          }
+        },
+        "health": {
+          "value": 10,
+          "max": 10
+        },
+        "wp": {
+          "value": 13,
+          "max": 13
+        },
+        "skills": {
+          "medicine": {
+            "proficiency": 75
+          },
+          "forensics": {
+            "proficiency": 65
+          },
+          "surgery": {
+            "proficiency": 55
+          },
+          "first_aid": {
+            "proficiency": 75
+          },
+          "psychotherapy": {
+            "proficiency": 40
+          },
+          "bureaucracy": {
+            "proficiency": 45
+          },
+          "search": {
+            "proficiency": 50
+          }
+        },
+        "typedSkills": {
+          "0_science_biologia": {
+            "group": "science",
+            "label": "Biologia",
+            "proficiency": 70,
+            "failure": false
+          }
+        },
+        "shortDescription": "46 anos • médica de Ashford • colaborou com registro de nascimento",
+        "notes": "<h2>DRA. MIRIAM SHAW</h2><p><em>46 anos • médica de Ashford • colaborou com registro de nascimento</em></p>\n<h3>Interpretação</h3><p>Metódica e culpada. Teme ser denunciada pela falsificação do registro e por ter ignorado sinais clínicos durante anos.</p>\n<h3>Combate e reações</h3><ul><li>Não está armada; Combate Desarmado 40%, dano 1D4−1.</li></ul>\n<h3>Habilidades</h3><ul><li>Tem acesso a raio-X, exames e amostras antigas de sangue de Isaac.</li><li>Sabe estabilizar Annie e preservar amostras sob refrigeração.</li></ul>\n<h3>Pistas</h3><ul><li>Explica que tecido “curado” é tecido substituído por estrutura estranha.</li><li>Tecidos alterados apresentam degradação ao congelar, sugerindo vulnerabilidade à criogenia.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>Ela reconhece que autenticou um nascimento impossível. Pode entregar originais ao grupo se receber promessa de proteção a Annie e Isaac.</p>\n<h3>Estágios e SAN</h3><p>Se a equipe insistir em encobrimento sem socorro, pode recorrer às autoridades estaduais.</p><p>Estudar a alteração dos órgãos: SAN 0/1D4; autópsia de convertido: SAN 1/1D6.</p>\n<p><strong>Perícias de referência:</strong> Medicina 75%; Ciência (Biologia) 70%; Ciência Forense 65%; Cirurgia 55%; Primeiros Socorros 75%; Psicoterapia 40%; Burocracia 45%; Busca 50%.</p>",
+        "sanity": {
+          "value": 65,
+          "max": 99,
+          "currentBreakingPoint": 52
+        }
+      },
+      "items": []
+    },
+    {
+      "key": "npc-05",
+      "name": "Rev. Abel Mercer",
+      "type": "npc",
+      "img": "assets/portraits/05_rev_abel_mercer.webp",
+      "token": "assets/tokens/05_rev_abel_mercer.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 10
+          },
+          "con": {
+            "value": 9
+          },
+          "dex": {
+            "value": 10
+          },
+          "int": {
+            "value": 12
+          },
+          "pow": {
+            "value": 14
+          },
+          "cha": {
+            "value": 15
+          }
+        },
+        "health": {
+          "value": 10,
+          "max": 10
+        },
+        "wp": {
+          "value": 14,
+          "max": 14
+        },
+        "skills": {
+          "persuade": {
+            "proficiency": 75
+          },
+          "humint": {
+            "proficiency": 60
+          },
+          "occult": {
+            "proficiency": 45
+          },
+          "history": {
+            "proficiency": 40
+          },
+          "alertness": {
+            "proficiency": 40
+          },
+          "bureaucracy": {
+            "proficiency": 30
+          },
+          "unarmed_combat": {
+            "proficiency": 40
+          }
+        },
+        "typedSkills": {},
+        "shortDescription": "57 anos • pastor local • organizador da vigília pública",
+        "notes": "<h2>REV. ABEL MERCER</h2><p><em>57 anos • pastor local • organizador da vigília pública</em></p>\n<h3>Interpretação</h3><p>Convicto de estar testemunhando uma intervenção divina. Não deseja mal algum aos agentes, mas prioriza proteger Isaac de qualquer “perseguição”.</p>\n<h3>Combate e reações</h3><ul><li>Briga: Combate Desarmado 40%, dano 1D4−1.</li><li>Reúne moradores para bloquear acessos; não comanda ataques suicidas.</li></ul>\n<h3>Habilidades</h3><ul><li>Pode induzir dezenas de moradores a se reunirem na fazenda.</li><li>Sob o sinal, respira em sincronia com os convertidos e sente a aproximação da Abertura.</li></ul>\n<h3>Pistas</h3><ul><li>Viu Isaac curar um animal morto e fala de “um sol interior”.</li><li>Seu sermão reproduz palavras que Isaac ouve em sonhos, embora os dois nunca tenham conversado sobre isso.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>Não pertence a um culto extraterrestre consciente; foi contaminado por um milagre. Seu medo de morrer alimenta a adesão ao Coro.</p>\n<h3>Estágios e SAN</h3><p>Se isolado da rede, recupera autonomia gradualmente. Pode desmoronar emocionalmente ao perceber que utilizou os fiéis para amplificar o sinal.</p><p>Observar uma sincronização coletiva: SAN 0/1D4.</p>\n<p><strong>Perícias de referência:</strong> Persuasão 75%; HUMINT 60%; Ocultismo 45%; História 40%; Prontidão 40%; Burocracia 30%; Combate Desarmado 40%.</p>",
+        "sanity": {
+          "value": 70,
+          "max": 99,
+          "currentBreakingPoint": 56
+        }
+      },
+      "items": []
+    },
+    {
+      "key": "npc-06",
+      "name": "Leah Ortiz",
+      "type": "npc",
+      "img": "assets/portraits/06_leah_ortiz.webp",
+      "token": "assets/tokens/06_leah_ortiz.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 9
+          },
+          "con": {
+            "value": 10
+          },
+          "dex": {
+            "value": 13
+          },
+          "int": {
+            "value": 13
+          },
+          "pow": {
+            "value": 13
+          },
+          "cha": {
+            "value": 12
+          }
+        },
+        "health": {
+          "value": 10,
+          "max": 10
+        },
+        "wp": {
+          "value": 13,
+          "max": 13
+        },
+        "skills": {
+          "alertness": {
+            "proficiency": 55
+          },
+          "humint": {
+            "proficiency": 60
+          },
+          "persuade": {
+            "proficiency": 55
+          },
+          "stealth": {
+            "proficiency": 45
+          },
+          "search": {
+            "proficiency": 50
+          },
+          "computer_science": {
+            "proficiency": 25
+          },
+          "athletics": {
+            "proficiency": 45
+          }
+        },
+        "typedSkills": {},
+        "shortDescription": "14 anos • colega de Isaac • sabe que ele teme a própria transformação",
+        "notes": "<h2>LEAH ORTIZ</h2><p><em>14 anos • colega de Isaac • sabe que ele teme a própria transformação</em></p>\n<h3>Interpretação</h3><p>Perspicaz, espirituosa e leal. Recusa tratar Isaac como um experimento. Não sabe a origem dele.</p>\n<h3>Combate e reações</h3><ul><li>Evita violência; Esquiva 45%; Combate Desarmado 40%, dano 1D4−1.</li></ul>\n<h3>Habilidades</h3><ul><li>Pode enviar mensagens de texto antigas de Isaac sobre a “segunda mãe”.</li><li>Se tiver acesso direto a Isaac, consegue lembrá-lo de situações comuns da escola.</li></ul>\n<h3>Pistas</h3><ul><li>Recebeu confissão de que algo cresce atrás dos olhos dele.</li><li>Viu Isaac flutuar dormindo num passeio escolar semanas antes do acidente.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>Quer salvá-lo, mas pode se desesperar se descobrir que as curas contaminam pessoas. A reação depende da honestidade e respeito dos agentes.</p>\n<h3>Estágios e SAN</h3><p>Uma ameaça explícita contra Leah facilita a perda de controle de Isaac; sua presença voluntária pode favorecer negociação.</p><p>Não precisa rolar SAN rotineiramente; utilize somente se houver exposição sobrenatural aguda.</p>\n<p><strong>Perícias de referência:</strong> Prontidão 55%; HUMINT 60%; Persuasão 55%; Furtividade 45%; Busca 50%; Ciência da Computação 25%; Atletismo 45%.</p>",
+        "sanity": {
+          "value": 65,
+          "max": 99,
+          "currentBreakingPoint": 52
+        }
+      },
+      "items": []
+    },
+    {
+      "key": "npc-07",
+      "name": "Annie Price",
+      "type": "npc",
+      "img": "assets/portraits/07_annie_price.webp",
+      "token": "assets/tokens/07_annie_price.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 6
+          },
+          "con": {
+            "value": 8
+          },
+          "dex": {
+            "value": 9
+          },
+          "int": {
+            "value": 10
+          },
+          "pow": {
+            "value": 10
+          },
+          "cha": {
+            "value": 10
+          }
+        },
+        "health": {
+          "value": 7,
+          "max": 7
+        },
+        "wp": {
+          "value": 10,
+          "max": 10
+        },
+        "skills": {
+          "alertness": {
+            "proficiency": 35
+          },
+          "athletics": {
+            "proficiency": 30
+          },
+          "search": {
+            "proficiency": 30
+          },
+          "persuade": {
+            "proficiency": 25
+          },
+          "stealth": {
+            "proficiency": 20
+          },
+          "humint": {
+            "proficiency": 20
+          }
+        },
+        "typedSkills": {},
+        "shortDescription": "9 anos • paciente curada • testemunho direto da assimilação",
+        "notes": "<h2>ANNIE PRICE</h2><p><em>9 anos • paciente curada • testemunho direto da assimilação</em></p>\n<h3>Interpretação</h3><p>Criança afetuosa que voltou a andar, mas ouve uma voz dizendo que agora será “protegida para sempre”.</p>\n<h3>Combate e reações</h3><ul><li>Não combate; evite transformá-la em obstáculo físico.</li></ul>\n<h3>Habilidades</h3><ul><li>O sistema nervoso cresce em torno das vértebras como um segundo organismo.</li><li>Às vezes fala com voz sobreposta; sua frequência cardíaca acompanha a de Isaac.</li></ul>\n<h3>Pistas</h3><ul><li>Sabe que seu corpo “não é mais todo dela”.</li><li>Radiografias confirmam tecido estrangeiro e podem estabelecer a cadeia de contaminação.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>O Coro consegue utilizar sua voz momentaneamente. Annie ainda possui consciência e lembra os nomes de familiares.</p>\n<h3>Estágios e SAN</h3><p>Se a cápsula for desativada, o progresso para, mas as alterações não desaparecem. A menina exige tratamento prolongado.</p><p>Manifestação anatômica da segunda boca: SAN 1/1D6 para quem testemunhar.</p>\n<p><strong>Perícias de referência:</strong> Prontidão 35%; Atletismo 30%; Busca 30%; Persuasão 25%; Furtividade 20%; HUMINT 20%.</p>",
+        "sanity": {
+          "value": 50,
+          "max": 99,
+          "currentBreakingPoint": 40
+        }
+      },
+      "items": []
+    },
+    {
+      "key": "npc-08",
+      "name": "CONVERTIDO DA PERMANÊNCIA",
+      "type": "unnatural",
+      "img": "assets/portraits/08_convertido.webp",
+      "token": "assets/tokens/08_convertido.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 13
+          },
+          "con": {
+            "value": 11
+          },
+          "dex": {
+            "value": 9
+          },
+          "int": {
+            "value": 10
+          },
+          "pow": {
+            "value": 8
+          },
+          "cha": {
+            "value": 7
+          }
+        },
+        "health": {
+          "value": 12,
+          "max": 12
+        },
+        "wp": {
+          "value": 8,
+          "max": 8
+        },
+        "skills": {
+          "alertness": {
+            "proficiency": 50
+          },
+          "unarmed_combat": {
+            "proficiency": 45
+          },
+          "athletics": {
+            "proficiency": 40
+          },
+          "search": {
+            "proficiency": 40
+          },
+          "dodge": {
+            "proficiency": 30
+          },
+          "persuade": {
+            "proficiency": 20
+          }
+        },
+        "typedSkills": {},
+        "shortDescription": "Habitante assimilado parcialmente • oposição humana e não zumbi",
+        "notes": "<h2>CONVERTIDO DA PERMANÊNCIA</h2><p><em>Habitante assimilado parcialmente • oposição humana e não zumbi</em></p>\n<h3>Interpretação</h3><p>Continua consciente. Pode implorar socorro enquanto seus membros obedecem a impulsos externos.</p>\n<h3>Combate e reações</h3><ul><li>Imobilização: Combate Desarmado 45%; em vez de dano, agarrar mediante disputa apropriada.</li><li>Golpe: Combate Desarmado 45%, dano 1D6.</li><li>Armadura: 2 pontos; ignoram dor, não ferimentos incapacitantes.</li></ul>\n<h3>Habilidades</h3><ul><li>A 30 m de outro convertido, executa movimentos coordenados sem falar.</li><li>Pode repetir frases pronunciadas pela cápsula.</li><li>Ao perder o sinal, recupera decisão própria, mas pode entrar em choque.</li></ul>\n<h3>Pistas</h3><ul><li>Exames mostram tecido funcional novo em vez de necrose.</li><li>O padrão anatômico repete-se entre pessoas “curadas”.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>A infecção progride quando a rede recebe sinal; pode ser retardada com isolamento e queda de temperatura, mas não é automaticamente reversível.</p>\n<h3>Estágios e SAN</h3><p>Estágio 1: alterações sutis; 2: sincronização; 3: reflexos involuntários e tecidos novos; 4: retransmissor vivo.</p><p>Manifestação orgânica: SAN 0/1D4. Corpo totalmente reconfigurado: SAN 1/1D6.</p>\n<p><strong>Perícias de referência:</strong> Prontidão 50%; Combate Desarmado 45%; Atletismo 40%; Busca 40%; Esquiva 30%; Persuasão 20%.</p>",
+        "sanity": {
+          "successLoss": "1",
+          "failedLoss": "1D6",
+          "notes": "Manifestação orgânica: SAN 0/1D4. Corpo totalmente reconfigurado: SAN 1/1D6."
+        }
+      },
+      "items": [
+        {
+          "name": "Braços reconfigurados",
+          "type": "weapon",
+          "system": {
+            "description": "Ataque corpo a corpo, 40%; 1D6.",
+            "skill": "unarmed_combat",
+            "damage": "1D6",
+            "range": "Engaged"
+          }
+        }
+      ]
+    },
+    {
+      "key": "npc-09",
+      "name": "ÚTERO / CÁPSULA",
+      "type": "unnatural",
+      "img": "assets/portraits/09_a_capsula.webp",
+      "token": "assets/tokens/09_a_capsula.png",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 20
+          },
+          "con": {
+            "value": 24
+          },
+          "dex": {
+            "value": 2
+          },
+          "int": {
+            "value": 1
+          },
+          "pow": {
+            "value": 20
+          },
+          "cha": {
+            "value": 1
+          }
+        },
+        "health": {
+          "value": 22,
+          "max": 22
+        },
+        "wp": {
+          "value": 20,
+          "max": 20
+        },
+        "skills": {
+          "alertness": {
+            "proficiency": 80
+          }
+        },
+        "typedSkills": {},
+        "shortDescription": "Infraestrutura alienígena • organismo transmissor • não é personagem humano",
+        "notes": "<h2>ÚTERO / CÁPSULA</h2><p><em>Infraestrutura alienígena • organismo transmissor • não é personagem humano</em></p>\n<h3>Interpretação</h3><p>Órgão cultivado para amadurecer um Precursor, difundir o Coro e construir uma passagem de assimilação.</p>\n<h3>Combate e reações</h3><ul><li>Três nervos/âncoras principais: 8 PV e armadura 2 cada.</li><li>Membrana reflexa: 45%, agarrar e conter, sem dano direto.</li><li>Ressonância neural: quem toca a cápsula pode sofrer SAN 1D4/1D10 ao compreender sua origem.</li></ul>\n<h3>Habilidades</h3><ul><li>Frio criogênico reduz a armadura de uma âncora a 0 durante 1D4 turnos (regra específica do cenário).</li><li>Destruir as três âncoras rompe a transmissão e remove a proteção de Isaac.</li><li>Morte do Precursor não elimina automaticamente a rede.</li></ul>\n<h3>Pistas</h3><ul><li>É encontrada sob o silo; raízes orgânicas apontam para os demais convertidos.</li><li>Tecido amostrado perde coesão em temperaturas muito baixas.</li></ul>\n<h3>Segredo (apenas Handler)</h3><p>É um instrumento autônomo de civilização extinta. Não mente: oferece eternidade sem autonomia pessoal.</p>\n<h3>Estágios e SAN</h3><p>Se o prazo de 21h14 se esgota, a passagem inicia estabilização. O Handler pode conceder minutos adicionais conforme ações anteriores.</p><p>Vislumbrar a civilização assimilada: SAN 1D4/1D10. Abertura da passagem: SAN 1D6/1D12.</p>\n<p><strong>Perícias de referência:</strong> Prontidão 80% (sensores); “Resistência” por atributo CON 120% para efeitos narrativos; demais perícias: não aplicáveis.</p>",
+        "sanity": {
+          "successLoss": "1",
+          "failedLoss": "1D6",
+          "notes": "Vislumbrar a civilização assimilada: SAN 1D4/1D10. Abertura da passagem: SAN 1D6/1D12."
+        }
+      },
+      "items": []
+    }
+  ],
+  "agents": [
+    {
+      "key": "agent-01",
+      "name": "Maia Torres",
+      "type": "agent",
+      "img": "icons/svg/mystery-man.svg",
+      "token": "icons/svg/mystery-man.svg",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 11
+          },
+          "con": {
+            "value": 12
+          },
+          "dex": {
+            "value": 12
+          },
+          "int": {
+            "value": 13
+          },
+          "pow": {
+            "value": 13
+          },
+          "cha": {
+            "value": 11
+          }
+        },
+        "health": {
+          "value": 12,
+          "max": 12
+        },
+        "wp": {
+          "value": 13,
+          "max": 13
+        },
+        "sanity": {
+          "value": 65,
+          "max": 99,
+          "currentBreakingPoint": 52
+        },
+        "skills": {
+          "accounting": {
+            "proficiency": 10
+          },
+          "alertness": {
+            "proficiency": 70
+          },
+          "anthropology": {
+            "proficiency": 0
+          },
+          "archeology": {
+            "proficiency": 0
+          },
+          "artillery": {
+            "proficiency": 0
+          },
+          "athletics": {
+            "proficiency": 30
+          },
+          "bureaucracy": {
+            "proficiency": 40
+          },
+          "computer_science": {
+            "proficiency": 50
+          },
+          "criminology": {
+            "proficiency": 50
+          },
+          "demolitions": {
+            "proficiency": 0
+          },
+          "disguise": {
+            "proficiency": 10
+          },
+          "dodge": {
+            "proficiency": 30
+          },
+          "drive": {
+            "proficiency": 50
+          },
+          "firearms": {
+            "proficiency": 70
+          },
+          "first_aid": {
+            "proficiency": 30
+          },
+          "forensics": {
+            "proficiency": 50
+          },
+          "heavy_machiner": {
+            "proficiency": 10
+          },
+          "heavy_weapons": {
+            "proficiency": 0
+          },
+          "history": {
+            "proficiency": 10
+          },
+          "humint": {
+            "proficiency": 60
+          },
+          "law": {
+            "proficiency": 30
+          },
+          "medicine": {
+            "proficiency": 0
+          },
+          "melee_weapons": {
+            "proficiency": 30
+          },
+          "navigate": {
+            "proficiency": 10
+          },
+          "occult": {
+            "proficiency": 10
+          },
+          "persuade": {
+            "proficiency": 70
+          },
+          "pharmacy": {
+            "proficiency": 0
+          },
+          "psychotherapy": {
+            "proficiency": 10
+          },
+          "ride": {
+            "proficiency": 10
+          },
+          "search": {
+            "proficiency": 70
+          },
+          "sigint": {
+            "proficiency": 0
+          },
+          "stealth": {
+            "proficiency": 30
+          },
+          "surgery": {
+            "proficiency": 0
+          },
+          "survival": {
+            "proficiency": 10
+          },
+          "swim": {
+            "proficiency": 20
+          },
+          "unarmed_combat": {
+            "proficiency": 60
+          },
+          "unnatural": {
+            "proficiency": 0
+          }
+        },
+        "typedSkills": {
+          "science_biologia": {
+            "group": "science",
+            "label": "Biologia",
+            "proficiency": 20,
+            "failure": false
+          }
+        },
+        "biography": {
+          "profession": "Agente federal",
+          "employer": "Delta Green (identidade funcional de cobertura)",
+          "nationality": "Estadunidense",
+          "age": "36"
+        },
+        "physical": {
+          "description": "<h2>MAIA TORRES</h2><p>36 anos • FBI, Crimes Violentos • pseudônimo: FALCÃO</p><h3>Especialidade</h3><p>Coordena entrevistas, consegue acesso policial, isola o acidente e constrói uma cobertura plausível.</p>\n<h3>Conflito</h3><p>Trabalhou num caso de desaparecimento infantil sem solução. A perspectiva de encarcerar Isaac a afeta mais do que admite.</p><h3>Possibilidades</h3><p>Pode pedir busca formal ou pressionar Thomas. Tem acesso a FBI, não a apoio ilimitado.</p>\n<h3>Equipamento inicial</h3><ul><li>Pistola de serviço (1D10); distintivo; algemas; câmera corporal desligável; kit forense leve; veículo federal.</li></ul><h3>Descrição física</h3><p>Altura mediana, cabelo escuro preso; fala de modo controlado e evita prometer o que não pode cumprir.</p>\n<p><em>Este agente é opcional: os participantes também podem criar agentes próprios.</em></p>"
+        }
+      },
+      "items": [
+        {
+          "name": "Ana Torres (irmã)",
+          "type": "bond",
+          "system": {
+            "score": 11,
+            "relationship": "Ana Torres (irmã)"
+          }
+        },
+        {
+          "name": "Daniel Chen (parceiro no FBI)",
+          "type": "bond",
+          "system": {
+            "score": 11,
+            "relationship": "Daniel Chen (parceiro no FBI)"
+          }
+        },
+        {
+          "name": "Sofia Almeida (ex-cônjuge)",
+          "type": "bond",
+          "system": {
+            "score": 11,
+            "relationship": "Sofia Almeida (ex-cônjuge)"
+          }
+        },
+        {
+          "name": "Não permitir que outra criança desapareça.",
+          "type": "motivation",
+          "system": {
+            "description": "Não permitir que outra criança desapareça."
+          }
+        },
+        {
+          "name": "Concluir operações sem deixar provas falsas comprometedoras.",
+          "type": "motivation",
+          "system": {
+            "description": "Concluir operações sem deixar provas falsas comprometedoras."
+          }
+        },
+        {
+          "name": "Pistola de serviço (1D10)",
+          "type": "weapon",
+          "system": {
+            "description": "Arma inicial, conforme ficha da operação.",
+            "skill": "firearms",
+            "damage": "1D10",
+            "range": "20M",
+            "equipped": true
+          }
+        },
+        {
+          "name": "distintivo",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "algemas",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "câmera corporal desligável",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "kit forense leve",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "veículo federal",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "agent-02",
+      "name": "Helena Brooks",
+      "type": "agent",
+      "img": "icons/svg/mystery-man.svg",
+      "token": "icons/svg/mystery-man.svg",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 10
+          },
+          "con": {
+            "value": 12
+          },
+          "dex": {
+            "value": 11
+          },
+          "int": {
+            "value": 15
+          },
+          "pow": {
+            "value": 14
+          },
+          "cha": {
+            "value": 10
+          }
+        },
+        "health": {
+          "value": 11,
+          "max": 11
+        },
+        "wp": {
+          "value": 14,
+          "max": 14
+        },
+        "sanity": {
+          "value": 70,
+          "max": 99,
+          "currentBreakingPoint": 56
+        },
+        "skills": {
+          "accounting": {
+            "proficiency": 10
+          },
+          "alertness": {
+            "proficiency": 40
+          },
+          "anthropology": {
+            "proficiency": 0
+          },
+          "archeology": {
+            "proficiency": 0
+          },
+          "artillery": {
+            "proficiency": 0
+          },
+          "athletics": {
+            "proficiency": 30
+          },
+          "bureaucracy": {
+            "proficiency": 50
+          },
+          "computer_science": {
+            "proficiency": 0
+          },
+          "criminology": {
+            "proficiency": 10
+          },
+          "demolitions": {
+            "proficiency": 0
+          },
+          "disguise": {
+            "proficiency": 10
+          },
+          "dodge": {
+            "proficiency": 30
+          },
+          "drive": {
+            "proficiency": 20
+          },
+          "firearms": {
+            "proficiency": 20
+          },
+          "first_aid": {
+            "proficiency": 80
+          },
+          "forensics": {
+            "proficiency": 70
+          },
+          "heavy_machiner": {
+            "proficiency": 10
+          },
+          "heavy_weapons": {
+            "proficiency": 0
+          },
+          "history": {
+            "proficiency": 10
+          },
+          "humint": {
+            "proficiency": 10
+          },
+          "law": {
+            "proficiency": 0
+          },
+          "medicine": {
+            "proficiency": 80
+          },
+          "melee_weapons": {
+            "proficiency": 30
+          },
+          "navigate": {
+            "proficiency": 10
+          },
+          "occult": {
+            "proficiency": 10
+          },
+          "persuade": {
+            "proficiency": 40
+          },
+          "pharmacy": {
+            "proficiency": 70
+          },
+          "psychotherapy": {
+            "proficiency": 30
+          },
+          "ride": {
+            "proficiency": 10
+          },
+          "search": {
+            "proficiency": 40
+          },
+          "sigint": {
+            "proficiency": 0
+          },
+          "stealth": {
+            "proficiency": 10
+          },
+          "surgery": {
+            "proficiency": 70
+          },
+          "survival": {
+            "proficiency": 10
+          },
+          "swim": {
+            "proficiency": 20
+          },
+          "unarmed_combat": {
+            "proficiency": 40
+          },
+          "unnatural": {
+            "proficiency": 0
+          }
+        },
+        "typedSkills": {
+          "science_biologia": {
+            "group": "science",
+            "label": "Biologia",
+            "proficiency": 80,
+            "failure": false
+          }
+        },
+        "biography": {
+          "profession": "Médica",
+          "employer": "Delta Green (identidade funcional de cobertura)",
+          "nationality": "Estadunidense",
+          "age": "42"
+        },
+        "physical": {
+          "description": "<h2>HELENA BROOKS</h2><p>42 anos • médica e epidemiologista • pseudônimo: LÍRIO</p><h3>Especialidade</h3><p>Examina as vítimas, estabiliza feridos, entende a progressão e encontra a pista da vulnerabilidade ao frio.</p>\n<h3>Conflito</h3><p>Já precisou escolher entre salvar pacientes e conter um surto. Não deseja repetir o trauma com Annie.</p><h3>Possibilidades</h3><p>Pode requisitar medidas sanitárias; não pode produzir antídotos milagrosos.</p>\n<h3>Equipamento inicial</h3><ul><li>Maleta médica; EPI; material de coleta; caixas térmicas; sedativos de uso clínico sujeito a protocolos; telefone institucional.</li></ul><h3>Descrição física</h3><p>Usa óculos discretos e anota tudo. Mantém tom clínico mesmo em situações extremas.</p>\n<p><em>Este agente é opcional: os participantes também podem criar agentes próprios.</em></p>"
+        }
+      },
+      "items": [
+        {
+          "name": "Marion Brooks (esposa)",
+          "type": "bond",
+          "system": {
+            "score": 10,
+            "relationship": "Marion Brooks (esposa)"
+          }
+        },
+        {
+          "name": "Eva (filha adulta)",
+          "type": "bond",
+          "system": {
+            "score": 10,
+            "relationship": "Eva (filha adulta)"
+          }
+        },
+        {
+          "name": "Equipe de epidemiologia do CDC",
+          "type": "bond",
+          "system": {
+            "score": 10,
+            "relationship": "Equipe de epidemiologia do CDC"
+          }
+        },
+        {
+          "name": "Salvar vítimas sem transformá-las em números.",
+          "type": "motivation",
+          "system": {
+            "description": "Salvar vítimas sem transformá-las em números."
+          }
+        },
+        {
+          "name": "Compreender as consequências de qualquer intervenção.",
+          "type": "motivation",
+          "system": {
+            "description": "Compreender as consequências de qualquer intervenção."
+          }
+        },
+        {
+          "name": "Maleta médica",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "EPI",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "material de coleta",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "caixas térmicas",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "sedativos de uso clínico sujeito a protocolos",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "telefone institucional",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "agent-03",
+      "name": "Gabriel Park",
+      "type": "agent",
+      "img": "icons/svg/mystery-man.svg",
+      "token": "icons/svg/mystery-man.svg",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 10
+          },
+          "con": {
+            "value": 11
+          },
+          "dex": {
+            "value": 12
+          },
+          "int": {
+            "value": 15
+          },
+          "pow": {
+            "value": 14
+          },
+          "cha": {
+            "value": 10
+          }
+        },
+        "health": {
+          "value": 11,
+          "max": 11
+        },
+        "wp": {
+          "value": 14,
+          "max": 14
+        },
+        "sanity": {
+          "value": 70,
+          "max": 99,
+          "currentBreakingPoint": 56
+        },
+        "skills": {
+          "accounting": {
+            "proficiency": 10
+          },
+          "alertness": {
+            "proficiency": 40
+          },
+          "anthropology": {
+            "proficiency": 0
+          },
+          "archeology": {
+            "proficiency": 0
+          },
+          "artillery": {
+            "proficiency": 0
+          },
+          "athletics": {
+            "proficiency": 30
+          },
+          "bureaucracy": {
+            "proficiency": 50
+          },
+          "computer_science": {
+            "proficiency": 80
+          },
+          "criminology": {
+            "proficiency": 10
+          },
+          "demolitions": {
+            "proficiency": 20
+          },
+          "disguise": {
+            "proficiency": 10
+          },
+          "dodge": {
+            "proficiency": 30
+          },
+          "drive": {
+            "proficiency": 20
+          },
+          "firearms": {
+            "proficiency": 20
+          },
+          "first_aid": {
+            "proficiency": 10
+          },
+          "forensics": {
+            "proficiency": 0
+          },
+          "heavy_machiner": {
+            "proficiency": 50
+          },
+          "heavy_weapons": {
+            "proficiency": 0
+          },
+          "history": {
+            "proficiency": 10
+          },
+          "humint": {
+            "proficiency": 10
+          },
+          "law": {
+            "proficiency": 0
+          },
+          "medicine": {
+            "proficiency": 0
+          },
+          "melee_weapons": {
+            "proficiency": 30
+          },
+          "navigate": {
+            "proficiency": 10
+          },
+          "occult": {
+            "proficiency": 10
+          },
+          "persuade": {
+            "proficiency": 20
+          },
+          "pharmacy": {
+            "proficiency": 0
+          },
+          "psychotherapy": {
+            "proficiency": 10
+          },
+          "ride": {
+            "proficiency": 10
+          },
+          "search": {
+            "proficiency": 40
+          },
+          "sigint": {
+            "proficiency": 60
+          },
+          "stealth": {
+            "proficiency": 10
+          },
+          "surgery": {
+            "proficiency": 0
+          },
+          "survival": {
+            "proficiency": 10
+          },
+          "swim": {
+            "proficiency": 20
+          },
+          "unarmed_combat": {
+            "proficiency": 40
+          },
+          "unnatural": {
+            "proficiency": 0
+          }
+        },
+        "typedSkills": {
+          "craft_eletricista": {
+            "group": "craft",
+            "label": "Eletricista",
+            "proficiency": 50,
+            "failure": false
+          },
+          "craft_mec_nica": {
+            "group": "craft",
+            "label": "Mecânica",
+            "proficiency": 30,
+            "failure": false
+          },
+          "craft_microeletr_nica": {
+            "group": "craft",
+            "label": "Microeletrônica",
+            "proficiency": 60,
+            "failure": false
+          },
+          "science_matem_tica": {
+            "group": "science",
+            "label": "Matemática",
+            "proficiency": 40,
+            "failure": false
+          },
+          "science_f_sica": {
+            "group": "science",
+            "label": "Física",
+            "proficiency": 60,
+            "failure": false
+          },
+          "science_qu_mica": {
+            "group": "science",
+            "label": "Química",
+            "proficiency": 40,
+            "failure": false
+          }
+        },
+        "biography": {
+          "profession": "Engenheiro / cientista da computação",
+          "employer": "Delta Green (identidade funcional de cobertura)",
+          "nationality": "Estadunidense",
+          "age": "34"
+        },
+        "physical": {
+          "description": "<h2>GABRIEL PARK</h2><p>34 anos • engenheiro eletrônico • pseudônimo: FAROL</p><h3>Especialidade</h3><p>Analisa vídeo, ruído eletromagnético e a infraestrutura da cápsula; pode identificar e interromper as âncoras.</p>\n<h3>Conflito</h3><p>Um experimento industrial com radiação foi encoberto por superiores; sente-se responsável pela morte de colega.</p><h3>Possibilidades</h3><p>Consegue operar equipamento técnico, mas precisa de tempo e acesso físico.</p>\n<h3>Equipamento inicial</h3><ul><li>Notebook isolado; osciloscópio portátil; multímetro; ferramentas; rádio; câmera térmica; luvas e cabos.</li></ul><h3>Descrição física</h3><p>Corpo magro; olhar atento a interferências em telas, postes e relógios.</p>\n<p><em>Este agente é opcional: os participantes também podem criar agentes próprios.</em></p>"
+        }
+      },
+      "items": [
+        {
+          "name": "Mina Park (mãe)",
+          "type": "bond",
+          "system": {
+            "score": 10,
+            "relationship": "Mina Park (mãe)"
+          }
+        },
+        {
+          "name": "Ethan (companheiro)",
+          "type": "bond",
+          "system": {
+            "score": 10,
+            "relationship": "Ethan (companheiro)"
+          }
+        },
+        {
+          "name": "Jules (ex-orientadora)",
+          "type": "bond",
+          "system": {
+            "score": 10,
+            "relationship": "Jules (ex-orientadora)"
+          }
+        },
+        {
+          "name": "Não permitir outra ocultação irresponsável.",
+          "type": "motivation",
+          "system": {
+            "description": "Não permitir outra ocultação irresponsável."
+          }
+        },
+        {
+          "name": "Proteger pessoas sem depender de armamento.",
+          "type": "motivation",
+          "system": {
+            "description": "Proteger pessoas sem depender de armamento."
+          }
+        },
+        {
+          "name": "Notebook isolado",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "osciloscópio portátil",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "multímetro",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "ferramentas",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "rádio",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "câmera térmica",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "luvas e cabos",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "agent-04",
+      "name": "Nadia Kessler",
+      "type": "agent",
+      "img": "icons/svg/mystery-man.svg",
+      "token": "icons/svg/mystery-man.svg",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 10
+          },
+          "con": {
+            "value": 11
+          },
+          "dex": {
+            "value": 10
+          },
+          "int": {
+            "value": 15
+          },
+          "pow": {
+            "value": 14
+          },
+          "cha": {
+            "value": 12
+          }
+        },
+        "health": {
+          "value": 11,
+          "max": 11
+        },
+        "wp": {
+          "value": 14,
+          "max": 14
+        },
+        "sanity": {
+          "value": 70,
+          "max": 99,
+          "currentBreakingPoint": 56
+        },
+        "skills": {
+          "accounting": {
+            "proficiency": 10
+          },
+          "alertness": {
+            "proficiency": 40
+          },
+          "anthropology": {
+            "proficiency": 0
+          },
+          "archeology": {
+            "proficiency": 0
+          },
+          "artillery": {
+            "proficiency": 0
+          },
+          "athletics": {
+            "proficiency": 30
+          },
+          "bureaucracy": {
+            "proficiency": 40
+          },
+          "computer_science": {
+            "proficiency": 60
+          },
+          "criminology": {
+            "proficiency": 10
+          },
+          "demolitions": {
+            "proficiency": 0
+          },
+          "disguise": {
+            "proficiency": 10
+          },
+          "dodge": {
+            "proficiency": 30
+          },
+          "drive": {
+            "proficiency": 20
+          },
+          "firearms": {
+            "proficiency": 20
+          },
+          "first_aid": {
+            "proficiency": 10
+          },
+          "forensics": {
+            "proficiency": 60
+          },
+          "heavy_machiner": {
+            "proficiency": 10
+          },
+          "heavy_weapons": {
+            "proficiency": 0
+          },
+          "history": {
+            "proficiency": 10
+          },
+          "humint": {
+            "proficiency": 30
+          },
+          "law": {
+            "proficiency": 0
+          },
+          "medicine": {
+            "proficiency": 0
+          },
+          "melee_weapons": {
+            "proficiency": 30
+          },
+          "navigate": {
+            "proficiency": 10
+          },
+          "occult": {
+            "proficiency": 10
+          },
+          "persuade": {
+            "proficiency": 20
+          },
+          "pharmacy": {
+            "proficiency": 40
+          },
+          "psychotherapy": {
+            "proficiency": 10
+          },
+          "ride": {
+            "proficiency": 10
+          },
+          "search": {
+            "proficiency": 40
+          },
+          "sigint": {
+            "proficiency": 0
+          },
+          "stealth": {
+            "proficiency": 10
+          },
+          "surgery": {
+            "proficiency": 0
+          },
+          "survival": {
+            "proficiency": 10
+          },
+          "swim": {
+            "proficiency": 20
+          },
+          "unarmed_combat": {
+            "proficiency": 40
+          },
+          "unnatural": {
+            "proficiency": 0
+          }
+        },
+        "typedSkills": {
+          "science_f_sica": {
+            "group": "science",
+            "label": "Física",
+            "proficiency": 80,
+            "failure": false
+          },
+          "science_biologia": {
+            "group": "science",
+            "label": "Biologia",
+            "proficiency": 70,
+            "failure": false
+          },
+          "science_qu_mica": {
+            "group": "science",
+            "label": "Química",
+            "proficiency": 70,
+            "failure": false
+          },
+          "foreign_language_espanhol": {
+            "group": "foreign_language",
+            "label": "Espanhol",
+            "proficiency": 40,
+            "failure": false
+          }
+        },
+        "biography": {
+          "profession": "Cientista",
+          "employer": "Delta Green (identidade funcional de cobertura)",
+          "nationality": "Estadunidense",
+          "age": "39"
+        },
+        "physical": {
+          "description": "<h2>NADIA KESSLER</h2><p>39 anos • física de materiais • pseudônimo: VEGA</p><h3>Especialidade</h3><p>Interpreta estruturas celulares, energia anômala e a escala cosmológica das memórias da cápsula.</p>\n<h3>Conflito</h3><p>Sua carreira depende de uma publicação cuja evidência original foi confiscada. Busca provas que não desapareçam.</p><h3>Possibilidades</h3><p>A equipe pode trabalhar melhor se ela preservar amostras sem se expor à rede.</p>\n<h3>Equipamento inicial</h3><ul><li>Espectrômetro portátil limitado; amostradores; câmera; bloco; crachá de laboratório; mochila de emergência.</li></ul><h3>Descrição física</h3><p>Cabelo curto; rosto atento e fala serena, que acelera quando encontra um padrão.</p>\n<p><em>Este agente é opcional: os participantes também podem criar agentes próprios.</em></p>"
+        }
+      },
+      "items": [
+        {
+          "name": "Amir Kessler (irmão)",
+          "type": "bond",
+          "system": {
+            "score": 12,
+            "relationship": "Amir Kessler (irmão)"
+          }
+        },
+        {
+          "name": "Rosa (melhor amiga)",
+          "type": "bond",
+          "system": {
+            "score": 12,
+            "relationship": "Rosa (melhor amiga)"
+          }
+        },
+        {
+          "name": "Equipe de laboratório",
+          "type": "bond",
+          "system": {
+            "score": 12,
+            "relationship": "Equipe de laboratório"
+          }
+        },
+        {
+          "name": "Judith (mãe)",
+          "type": "bond",
+          "system": {
+            "score": 12,
+            "relationship": "Judith (mãe)"
+          }
+        },
+        {
+          "name": "Distinguir a verdade de explicações convenientes.",
+          "type": "motivation",
+          "system": {
+            "description": "Distinguir a verdade de explicações convenientes."
+          }
+        },
+        {
+          "name": "Valorizar os limites da ciência diante do inexplicável.",
+          "type": "motivation",
+          "system": {
+            "description": "Valorizar os limites da ciência diante do inexplicável."
+          }
+        },
+        {
+          "name": "Espectrômetro portátil limitado",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "amostradores",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "câmera",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "bloco",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "crachá de laboratório",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "mochila de emergência",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "agent-05",
+      "name": "Caleb Ward",
+      "type": "agent",
+      "img": "icons/svg/mystery-man.svg",
+      "token": "icons/svg/mystery-man.svg",
+      "system": {
+        "statistics": {
+          "str": {
+            "value": 15
+          },
+          "con": {
+            "value": 14
+          },
+          "dex": {
+            "value": 13
+          },
+          "int": {
+            "value": 10
+          },
+          "pow": {
+            "value": 12
+          },
+          "cha": {
+            "value": 8
+          }
+        },
+        "health": {
+          "value": 15,
+          "max": 15
+        },
+        "wp": {
+          "value": 12,
+          "max": 12
+        },
+        "sanity": {
+          "value": 60,
+          "max": 99,
+          "currentBreakingPoint": 48
+        },
+        "skills": {
+          "accounting": {
+            "proficiency": 10
+          },
+          "alertness": {
+            "proficiency": 80
+          },
+          "anthropology": {
+            "proficiency": 0
+          },
+          "archeology": {
+            "proficiency": 0
+          },
+          "artillery": {
+            "proficiency": 0
+          },
+          "athletics": {
+            "proficiency": 80
+          },
+          "bureaucracy": {
+            "proficiency": 10
+          },
+          "computer_science": {
+            "proficiency": 0
+          },
+          "criminology": {
+            "proficiency": 10
+          },
+          "demolitions": {
+            "proficiency": 60
+          },
+          "disguise": {
+            "proficiency": 10
+          },
+          "dodge": {
+            "proficiency": 30
+          },
+          "drive": {
+            "proficiency": 20
+          },
+          "firearms": {
+            "proficiency": 80
+          },
+          "first_aid": {
+            "proficiency": 30
+          },
+          "forensics": {
+            "proficiency": 0
+          },
+          "heavy_machiner": {
+            "proficiency": 30
+          },
+          "heavy_weapons": {
+            "proficiency": 50
+          },
+          "history": {
+            "proficiency": 10
+          },
+          "humint": {
+            "proficiency": 10
+          },
+          "law": {
+            "proficiency": 0
+          },
+          "medicine": {
+            "proficiency": 0
+          },
+          "melee_weapons": {
+            "proficiency": 50
+          },
+          "navigate": {
+            "proficiency": 50
+          },
+          "occult": {
+            "proficiency": 10
+          },
+          "persuade": {
+            "proficiency": 20
+          },
+          "pharmacy": {
+            "proficiency": 0
+          },
+          "psychotherapy": {
+            "proficiency": 10
+          },
+          "ride": {
+            "proficiency": 10
+          },
+          "search": {
+            "proficiency": 20
+          },
+          "sigint": {
+            "proficiency": 0
+          },
+          "stealth": {
+            "proficiency": 70
+          },
+          "surgery": {
+            "proficiency": 0
+          },
+          "survival": {
+            "proficiency": 70
+          },
+          "swim": {
+            "proficiency": 50
+          },
+          "unarmed_combat": {
+            "proficiency": 60
+          },
+          "unnatural": {
+            "proficiency": 0
+          }
+        },
+        "typedSkills": {
+          "military_science_terrestre": {
+            "group": "military_science",
+            "label": "Terrestre",
+            "proficiency": 60,
+            "failure": false
+          }
+        },
+        "biography": {
+          "profession": "Operador especial",
+          "employer": "Delta Green (identidade funcional de cobertura)",
+          "nationality": "Estadunidense",
+          "age": "40"
+        },
+        "physical": {
+          "description": "<h2>CALEB WARD</h2><p>40 anos • ex-forças especiais • pseudônimo: LASTRO</p><h3>Especialidade</h3><p>Protege civis, evacua a igreja e pode criar passagem segura até os três nervos da cápsula.</p>\n<h3>Conflito</h3><p>Uma operação militar anterior envolveu civis mortos; tem horror de sacrificar inocentes “por segurança”.</p><h3>Possibilidades</h3><p>Sabe que força bruta não vence Isaac. Seu melhor papel é impedir baixas e dar tempo ao grupo.</p>\n<h3>Equipamento inicial</h3><ul><li>Pistola (1D10); arma longa (1D12); colete balístico; alicate; corda; lanterna; algemas de contenção; rádio.</li></ul><h3>Descrição física</h3><p>Grande porte, cicatriz fina no maxilar; prefere ficar perto da saída.</p>\n<p><em>Este agente é opcional: os participantes também podem criar agentes próprios.</em></p>"
+        }
+      },
+      "items": [
+        {
+          "name": "Mara Ward (filha)",
+          "type": "bond",
+          "system": {
+            "score": 8,
+            "relationship": "Mara Ward (filha)"
+          }
+        },
+        {
+          "name": "Grupo de veteranos",
+          "type": "bond",
+          "system": {
+            "score": 8,
+            "relationship": "Grupo de veteranos"
+          }
+        },
+        {
+          "name": "Nunca usar uma criança como alvo por conveniência.",
+          "type": "motivation",
+          "system": {
+            "description": "Nunca usar uma criança como alvo por conveniência."
+          }
+        },
+        {
+          "name": "Manter a equipe viva mesmo quando não haja glória.",
+          "type": "motivation",
+          "system": {
+            "description": "Manter a equipe viva mesmo quando não haja glória."
+          }
+        },
+        {
+          "name": "Pistola (1D10)",
+          "type": "weapon",
+          "system": {
+            "description": "Arma inicial, conforme ficha da operação.",
+            "skill": "firearms",
+            "damage": "1D10",
+            "range": "20M",
+            "equipped": true
+          }
+        },
+        {
+          "name": "arma longa (1D12)",
+          "type": "weapon",
+          "system": {
+            "description": "Arma inicial, conforme ficha da operação.",
+            "skill": "firearms",
+            "damage": "1D12",
+            "range": "100M",
+            "equipped": true
+          }
+        },
+        {
+          "name": "colete balístico",
+          "type": "armor",
+          "system": {
+            "description": "Colete balístico de proteção.",
+            "protection": 4,
+            "equipped": true
+          }
+        },
+        {
+          "name": "alicate",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "corda",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "lanterna",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "algemas de contenção",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        },
+        {
+          "name": "rádio",
+          "type": "gear",
+          "system": {
+            "description": "Equipamento inicial da Operação Véspera.",
+            "equipped": true
+          }
+        }
+      ]
+    }
+  ],
+  "journals": [
+    {
+      "key": "briefing",
+      "name": "00 — Dossiê inicial (Handler)",
+      "public": false,
+      "pages": [
+        {
+          "title": "Resumo da operação",
+          "html": "<h2>DELTA GREEN · OPERAÇÃO VÉSPERA</h2><p><strong>One-shot de horror cósmico</strong> — Kansas, 31/10/2026. 3–5 agentes; duração estimada 4–6 horas.</p><p>Investigação de adolescente que impediu um caminhão de atingir um ônibus escolar. O rapaz adotado pelos Hale chegou em cápsula alienígena há 14 anos. A cápsula está sob o SILO ANTIGO da fazenda, não em outro local.</p><p><strong>Objetivos:</strong> investigar a origem do fenômeno, conter disseminação biológica, proteger civis e formular encobrimento plausível.</p><p><strong>Tema:</strong> salvação que exige a destruição da individualidade. Isaac não é intrinsecamente mau.</p>"
+        },
+        {
+          "title": "Introdução aos agentes",
+          "html": "<h2>Mensagem da célula</h2><p>Uma gravação de onze segundos mostra um adolescente segurando um caminhão em movimento. O vídeo registra uma auréola de estruturas ósseas e duas vozes simultâneas.</p><p>Autorizada investigação discreta com credenciais de FBI, CDC ou segurança ambiental, conforme a cobertura escolhida pelo grupo.</p><p><em>“Se esse garoto realmente fez o que aparece no vídeo, não tentem descobrir quão resistente ele é atirando nele.”</em></p>"
+        },
+        {
+          "title": "Preparação e ritmo",
+          "html": "<h2>Uso na mesa</h2><ul><li>A investigação é não linear: clínica, estrada, igreja e fazenda podem ser exploradas em qualquer ordem.</li><li>Nenhuma pista central deve ficar bloqueada por um único teste falho.</li><li>O relógio da Abertura é ferramenta narrativa; ajuste etapas pelo ritmo real da mesa.</li><li>Não force o assassinato de Isaac como resolução padrão.</li><li>Revele alterações corporais gradualmente e combine limites de horror com o grupo.</li></ul>"
+        },
+        {
+          "title": "Anexos imprimíveis (PDF)",
+          "html": "<h2>Arquivos de referência</h2><p>Os PDFs originais da operação estão incorporados ao módulo. Links de acesso pelo navegador do Foundry:</p><ul>\n  <li><a href=\"modules/operacao-vespera-deltagreen/assets/reference/fichas_npcs_handler.pdf\" target=\"_blank\" rel=\"noopener\">Dossiês e fichas do Handler (NPCs)</a></li>\n  <li><a href=\"modules/operacao-vespera-deltagreen/assets/reference/agentes_prontos.pdf\" target=\"_blank\" rel=\"noopener\">Cinco agentes opcionais (fichas imprimíveis)</a></li>\n  <li><a href=\"modules/operacao-vespera-deltagreen/assets/reference/atlas_handler.pdf\" target=\"_blank\" rel=\"noopener\">Atlas do Handler</a></li>\n  </ul><p>Os links são relativos ao servidor local do Foundry e não exigem Internet após a instalação.</p>"
+        }
+      ]
+    },
+    {
+      "key": "verdade",
+      "name": "01 — A verdade sobre Isaac e o Coro",
+      "public": false,
+      "pages": [
+        {
+          "title": "2012: o nascimento",
+          "html": "<h2>31 de outubro de 2012</h2><p>Thomas e Evelyn Hale, depois de perderem o bebê Nathan, encontraram uma cápsula orgânica na plantação. No interior havia um bebê humano ligado à membrana por um cordão umbilical branco. Evelyn o tocou, a ligação se soltou, e ele disse: “Mamãe”.</p><p>Registraram-no como Isaac Hale. Enterraram e esconderam a cápsula sob o silo antigo. A Dra. Miriam Shaw ajudou a obter um registro de nascimento falso.</p>"
+        },
+        {
+          "title": "O Coro da Permanência",
+          "html": "<h2>Civilização morta</h2><p>O Precursor foi cultivado por uma antiga civilização que concluiu ser a individualidade a causa da morte e sofrimento. Ela própria se dissolveu numa rede coletiva, deixando um sistema autônomo de replicação biológica e recrutamento de civilizações.</p><p>Isaac é o convite: suas curas são autênticas, mas substituem tecidos e conectam mentes à rede. O Coro não mente ao prometer fim da dor; não entende por que a autonomia pessoal importa.</p><p>Aos 14 anos, em 31/10/2026, a cápsula reinicia a sincronização; três âncoras conduzem o sinal para o corpo de Isaac e para pessoas convertidas.</p>"
+        },
+        {
+          "title": "Anatomia e fraquezas",
+          "html": "<h2>O que a entidade pode fazer</h2><ul><li>Força, voo e pulsos térmicos: manifestações de alterações físicas em Isaac.</li><li>Cura: reconstrução de tecido com arquitetura alienígena, jamais restauração neutra.</li><li>Frio intenso inibe a recuperação dos nervos da cápsula. O tanque de nitrogênio da fazenda cria uma alternativa experimental para atacar três âncoras, de 8 PV e armadura 2 cada.</li><li>Destruir as três âncoras interrompe a conexão e elimina proteção sobrenatural de Isaac.</li><li>A cápsula pode revelar imagens da extinção do Coro ao contato.</li></ul>"
+        }
+      ]
+    },
+    {
+      "key": "cronologia",
+      "name": "02 — Relógio da Abertura",
+      "public": false,
+      "pages": [
+        {
+          "title": "Escalada",
+          "html": "<h2>31/10/2026</h2><ul><li><strong>16h — O despertar:</strong> vídeo do caminhão; agentes chegam.</li><li><strong>18h — Milagres:</strong> tecidos anômalos e sofrimento dos curados.</li><li><strong>19h30 — Congregação:</strong> moradores caminham involuntariamente rumo à fazenda.</li><li><strong>20h30 — Ascensão:</strong> Isaac se transforma e perde o controle temporariamente.</li><li><strong>21h14 — A Abertura:</strong> cápsula estabiliza a transmissão; surgem enormes formas no céu.</li></ul><p>Atrasos por contenção, evacuação ou interferência na cápsula são possíveis. Uma aparente oração não é necessária para a Abertura, mas serve como mecanismo de sincronização.</p>"
+        }
+      ]
+    },
+    {
+      "key": "cenas",
+      "name": "03 — Roteiro e cenas",
+      "public": false,
+      "pages": [
+        {
+          "title": "Cena A — Estrada",
+          "html": "<h2>A estrada</h2><p>Um caminhão parcialmente suspenso e um ônibus escolar sobrevivem ao desastre. As marcas das mãos no para-choque e o asfalto vitrificado comprovam violência física impossível. Bússolas apontam para baixo no círculo do impacto.</p><p><strong>Pistas:</strong> Isaac distorce gravidade/temperatura; áudio captura vozes sobrepostas; ônibus e caminhão são evidência; não há colisão compatível com o dano.</p><p><strong>Condução:</strong> testemunhas podem descrever uma auréola de “ossos” e o medo evidente do garoto.</p>"
+        },
+        {
+          "title": "Cena B — Clínica",
+          "html": "<h2>A clínica e Annie Price</h2><p>A menina Annie Price voltou a andar após toque de Isaac, mas desenvolve tecido ramificado ao redor da coluna e um órgão semelhante a uma segunda boca na garganta: “Preparada”.</p><p><strong>Clues:</strong> exames antigos revelam células de Isaac replicando fora do corpo; análises atuais mostram tecidos alheios à anatomia humana; amostras de pessoas curadas degeneram em temperaturas muito baixas.</p><p><strong>SAN:</strong> assistir à manifestação orgânica 1/1D6. Não obstrua a revelação por falta de Medicina.</p>"
+        },
+        {
+          "title": "Cena C — Fazenda",
+          "html": "<h2>Casa Hale e silo</h2><p>Evelyn protege Isaac; Thomas o teme, mas ama o filho. O quarto de Isaac contém desenhos do Coro e a manta vermelha herdada de Nathan. Thomas guardou chaves do silo. Sob o concreto encontra-se a cápsula, ainda viva.</p><p><strong>Pistas:</strong> datas de 2012, registros escolares, a primeira palavra “Mamãe”, desenhos astronômicos e o croqui da passagem sob o silo.</p><p><strong>Opção emocional:</strong> manter Evelyn e Leah próximas amplia a capacidade de Isaac de resistir à programação.</p>"
+        },
+        {
+          "title": "Cena D — Igreja",
+          "html": "<h2>A igreja e o reverendo Mercer</h2><p>Uma vigília celebra os milagres. Pessoas curadas revelam cicatrizes com aspecto de plástico translúcido; em uma oração, todos param por sete segundos e respiram em uníssono.</p><p><strong>Pistas:</strong> o fenômeno não é apenas adoração: converte humanos em retransmissores biológicos, conectados à vontade do Coro.</p><p><strong>SAN:</strong> 0/1D4 pelo episódio coletivo.</p>"
+        },
+        {
+          "title": "Cena E — Câmara",
+          "html": "<h2>Câmara subterrânea</h2><p>O corredor de manutenção desce do silo até a antecâmara e a sala circular. Três âncoras nervosas alimentam a cápsula-útero ao centro. O contato pode transmitir cenas de mundos assimilados.</p><p><strong>Gatilho:</strong> sincronização às 21h14; Isaac levita sobre o silo com a manta vermelha; auréola vertebral e estrutura luminosa se abrem no tórax.</p><p><strong>SAN:</strong> revelação da civilização 1D4/1D10; Abertura 1D6/1D12.</p>"
+        }
+      ]
+    },
+    {
+      "key": "desfecho",
+      "name": "04 — Confronto, resoluções e epílogos",
+      "public": false,
+      "pages": [
+        {
+          "title": "Quatro formas de conter",
+          "html": "<h2>Resoluções viáveis</h2><ul><li><strong>Destruir o útero:</strong> inutilizar as 3 âncoras nervosas; Isaac pode sobreviver e ser tratado.</li><li><strong>Fazer Isaac escolher:</strong> vínculo, evidências de danos e tempo; ele pode direcionar seu poder contra o transmissor e sobreviver com sequelas.</li><li><strong>Confronto letal:</strong> após neutralizar a cápsula, Isaac torna-se vulnerável; matar um adolescente consciente tem custo moral.</li><li><strong>Contenção parcial:</strong> evacuar civis e retardar sincronização concede tempo, mas não destrói a ameaça.</li></ul><p>Testes sociais podem ajudar; uma única rolagem não deve decidir a humanidade de Isaac.</p>"
+        },
+        {
+          "title": "Finais",
+          "html": "<h2>Epílogos</h2><ul><li><strong>Menino que caiu do céu:</strong> Isaac fica sob custódia clandestina e quer ver Evelyn.</li><li><strong>Último milagre:</strong> Isaac se sacrifica e deixa sua manta vermelha sobre o silo.</li><li><strong>Misericórdia do Coro:</strong> a população não sofre mais, mas respira e fala como uma única consciência.</li><li><strong>A coisa que ficou:</strong> a operação termina e outro recém-nascido com auréola aparece meses depois.</li></ul><p>Não há uma vitória gratuita: os “curados” continuam fisiologicamente modificados.</p>"
+        }
+      ]
+    },
+    {
+      "key": "estatisticas",
+      "name": "05 — Quadro do Handler",
+      "public": false,
+      "pages": [
+        {
+          "title": "Isaac e cápsula",
+          "html": "<h2>Referência de combate</h2><ul><li>Isaac: FOR 24, CON 20, DES 16, INT 13, POD 18, CAR 14; 22 PV; Combate Desarmado 65% (golpe 1D10+3); pulso térmico 55% (2D8, até 20 m); voo 15m/turno.</li><li>Conectado à cápsula: ataques convencionais causam no máximo 1 PV por acerto; regenera 1D4 PV/turno.</li><li>Estágio terminal (se não contido): FOR 30, CON 25, DES 18, POD 20, PV 28; golpe 2D10+3.</li><li>Cápsula: FOR 20, CON 24, DES 2, INT 1, POD 20, CAR 1; 22 PV; armadura 4.</li><li>Três âncoras: 8 PV e armadura 2 cada; frio criogênico reduz armadura a 0 por 1D4 turnos.</li><li>Convertido: 12 PV, proteção orgânica 2; Combate Desarmado 40% (1D6).</li></ul><p>Os ataques e efeitos extraordinários são regras específicas desta aventura, não habilidades oficiais do sistema.</p>"
+        },
+        {
+          "title": "Pistas e SAN",
+          "html": "<h2>Números de referência</h2><ul><li>Abertura orgânica de Isaac: SAN 1D4/1D8.</li><li>Cena clínica: SAN 1/1D6.</li><li>Sincronização de moradores: SAN 0/1D4.</li><li>Visão da civilização assimilada: SAN 1D4/1D10.</li><li>Cápsula aberta e passagem: SAN 1D6/1D12.</li></ul><p>Pistas nunca são retidas por falha isolada de perícia. Modifique custos, tempo e exposição.</p>"
+        }
+      ]
+    },
+    {
+      "key": "handout-relatorio",
+      "name": "HANDOUT 01 — Ocorrência de 2012",
+      "public": true,
+      "pages": [
+        {
+          "title": "Boletim de ocorrência",
+          "html": "<h2>SHERIFF DE ASHFORD · 31/10/2012</h2><p>Relatado clarão atmosférico e tremor sobre a propriedade Hale. Não se encontraram fragmentos de meteorito. Interferência em rádio e falha telefônica.</p><p>Thomas Hale parecia amedrontado. Evelyn Hale sorria enquanto solicitava que a polícia fosse embora. Ouviu-se choro de criança dentro da casa.</p>"
+        }
+      ]
+    },
+    {
+      "key": "handout-clinica",
+      "name": "HANDOUT 02 — Prontuário de Annie Price",
+      "public": true,
+      "pages": [
+        {
+          "title": "Prontuário reservado",
+          "html": "<h2>Clínica de Ashford</h2><p>Paciente: Annie Price, nove anos. Regressão inexplicável da lesão medular; estruturas ramificadas de composição desconhecida na coluna, atividade elétrica autônoma e vocalizações durante sono.</p><p><em>“A menina não está se recuperando. Está sendo reconstruída.” — Dra. Miriam Shaw.</em></p>"
+        }
+      ]
+    },
+    {
+      "key": "handout-caderno",
+      "name": "HANDOUT 03 — Caderno de Isaac",
+      "public": true,
+      "pages": [
+        {
+          "title": "Página rasgada",
+          "html": "<h2>Anotação manuscrita de Isaac</h2><p>“Eu escuto pessoas chorando quando tento dormir. Algumas estão muito longe. Elas dizem que não querem morrer. Eu não quero que ninguém morra. Mas toda vez que faço alguém melhorar, a voz fica mais alta.”</p><p>“Tem outra mãe debaixo do chão. Ela diz que está quase na hora. Eu não quero ir com ela.”</p>"
+        }
+      ]
+    },
+    {
+      "key": "handout-cobertura",
+      "name": "HANDOUT 04 — Briefing aos agentes",
+      "public": true,
+      "pages": [
+        {
+          "title": "Ordem de missão",
+          "html": "<h2>ORDEM FEDERAL — OPERAÇÃO VÉSPERA</h2><p>Investigar evento físico inexplicável em Ashford, Kansas, observado em vídeo após acidente rodoviário. Limitar circulação de material não corroborado, documentar risco ambiental e proteger pessoas envolvidas.</p><p><strong>Contato:</strong> Controlador da célula. <strong>Coberturas sugeridas:</strong> FBI, CDC, segurança ambiental. <strong>Nota:</strong> Não realizar confronto direto com o adolescente sem avaliar a natureza do evento.</p>"
+        }
+      ]
+    },
+    {
+      "key": "handout-mapa",
+      "name": "HANDOUT 05 — Mapa regional",
+      "public": true,
+      "pages": [
+        {
+          "title": "Ashford, Kansas",
+          "html": "<h2>Mapa esquemático</h2><p><img style=\"width:100%;height:auto;\" src=\"modules/operacao-vespera-deltagreen/assets/maps/00_regiao_ashford.webp\" /></p><p>1 clínica; 2 igreja; 3 cidade; 4 acidente; 5 fazenda Hale. <em>Os marcadores são pontos de referência, não distâncias medidas.</em></p>"
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "key": "efeitos-do-coro",
+      "name": "VÉSPERA — Sinais da Permanência",
+      "formula": "1d6",
+      "entries": [
+        "Aparelhos elétricos emitem uma segunda voz, um segundo depois de alguém falar.",
+        "Todas as pessoas em uma sala suspendem a respiração por sete segundos.",
+        "O vapor sobre uma xícara desenha um círculo de vértebras.",
+        "Uma pessoa curada reconhece um agente que nunca encontrou.",
+        "Um animal observa fixamente o céu e começa a chorar com voz humana.",
+        "O coração de um infectado bate em sincronia com os passos de Isaac."
+      ]
+    }
+  ]
+}
