@@ -1,8 +1,8 @@
 {
   "id": "operacao-vespera-deltagreen",
   "title": "Operação Véspera — O Sol Debaixo da Pele (Delta Green)",
-  "description": "Operação autoral em pt-BR. Inclui nove cenas com mapas, fog individual, macro para reaplicar backgrounds, nove NPCs, cinco agentes opcionais e complementação da tradução do sistema Delta Green.",
-  "version": "1.0.6",
+  "description": "One-shot Delta Green em pt-BR: 9 cenas com backgrounds automáticos por Levels do Foundry 14, fog individual, 9 NPCs, 5 agentes, handouts e tradução complementar.",
+  "version": "1.0.7",
   "compatibility": {
     "minimum": "14",
     "verified": "14",
@@ -44,7 +44,7 @@
   "readme": "README.md",
   "url": "https://github.com/tulioscost/operacao-vespera-deltagreen",
   "manifest": "https://github.com/tulioscost/operacao-vespera-deltagreen/releases/latest/download/module.json",
-  "download": "https://github.com/tulioscost/operacao-vespera-deltagreen/releases/download/v1.0.6/operacao-vespera-deltagreen.zip",
+  "download": "https://github.com/tulioscost/operacao-vespera-deltagreen/releases/download/v1.0.7/operacao-vespera-deltagreen.zip",
   "languages": [
     {
       "lang": "pt-BR",

@@ -14,6 +14,6 @@ missing=[p for p in required if not (root/p).is_file()]
 if missing:raise SystemExit('Arquivos ausentes: '+', '.join(missing))
 assert 'scripts/importer.mjs' in required
 s=(root/'scripts/importer.mjs').read_text(encoding='utf-8')
-for snippet in ('openMapBackgrounds','checkLanguage','fog.mode','makeMacro'):
+for snippet in ('openMapBackgrounds','checkLanguage','fog.mode','makeMacro','scene.initialLevel',"createEmbeddedDocuments('Level'",'level.update'):
  assert snippet in s, snippet
 print('OK: ',len(set(required)), 'recursos referenciados existentes; fog, macros e tradução incluídos.')

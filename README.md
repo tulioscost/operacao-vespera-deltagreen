@@ -1,3 +1,17 @@
+## Correção Foundry VTT 14 — v1.0.7
+
+O Foundry 14 armazena os fundos em **Scene → Level → background.src**. Versões antigas deste módulo gravavam `Scene.background.src`, razão pela qual as cenas podiam aparecer cinzentas embora as imagens estivessem visíveis nos diários.
+
+**Agora é automático:** ao abrir o mundo como Handler, o módulo verifica as nove cenas que importou, atribui cada arquivo de mapa ao Level inicial, ativa `tokenVision` e configura `fog.mode = 1` (exploração individual). Também corrige cenas importadas anteriormente. Não apaga paredes, tokens, níveis adicionais, notas nem o histórico de exploração. A operação é repetível sem duplicar os níveis; fundos personalizados não vazios serão preservados após a migração.
+
+**Importante:** para que jogadores vejam o mapa com visão por token e fog ativado, precisam ter um token com visão e permissão apropriada, posicionado na cena. O Handler pode visualizar a cena normalmente.
+
+Após publicar a release no GitHub, atualize o módulo e **feche/reabra o mundo** para executar a migração `ready`. Não é necessário executar a macro manual.
+
+A macro opcional `VÉSPERA — Aplicar mapas e fog` pode ser usada apenas se for necessário *forçar* a restauração dos nove backgrounds oficiais.
+
+---
+
 # OPERAÇÃO VÉSPERA — O SOL DEBAIXO DA PELE
 
 Módulo de aventura **autoral não oficial** em português para **Foundry VTT 14** e sistema **Delta Green 2.0.1** (`deltagreen`).

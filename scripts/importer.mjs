@@ -3,7 +3,7 @@ const MOD='operacao-vespera-deltagreen';
 const asset=path=>`modules/${MOD}/${path}`;
 // Foundry VTT v14: modo INDIVIDUAL (1) mantém o fog explorado por usuário.
 const FOG_MODE=1;
-const SCENE_CONFIG_VERSION=2;
+const SCENE_CONFIG_VERSION=3;
 let busy=false;
 Hooks.once('init',()=>game.settings.register(MOD,'imported',{name:'VÉSPERA: conteúdo instalado',scope:'world',config:false,type:Boolean,default:false}));
 const modFlag=key=>({[MOD]:{key}});
@@ -71,43 +71,97 @@ function scenePage(id,journals){
   else prefix='Cena C';
   return journals.get('cenas')?.pages.contents.find(p=>p.name.startsWith(prefix))||null;
 }
-/** Configuração de cenas do módulo. Migração idempotente sem apagar exploração existente. */
-function desiredSceneSettings(entry){
+/** Configuração v14: fundos das cenas pertencem aos Levels, não ao Scene.background.
+ * Migração idempotente: atua somente em cenas identificadas pelo módulo.
+ * Não remove níveis, tokens, paredes, diários nem a exploração já registrada.
+ */
+function desiredSceneSettings(entry) {
   return {
-    'background.src':asset(entry.image),
-    tokenVision:true,
-    'fog.mode':FOG_MODE
+    image: asset(entry.image),
+    tokenVision: true,
+    fogMode: FOG_MODE
   };
 }
-async function updateSceneSettings(scene,entry,{force=false}={}){
-  if(!scene || scene.getFlag(MOD,'key')!==entry.id)return false;
-  const expected=desiredSceneSettings(entry);
-  const patch={};
-  const version=Number(scene.getFlag(MOD,'sceneConfigVersion')||0);
-  if(scene.background?.src!==expected['background.src']) {
-    // O plano de fundo do módulo deve estar presente na cena; futuras alterações
-    // manuais são preservadas após a primeira migração para o esquema v1.0.2.
-    if(force || version<SCENE_CONFIG_VERSION || !scene.background?.src)
-      patch['background.src']=expected['background.src'];
-  }
-  if(scene.tokenVision!==true && (force || version<SCENE_CONFIG_VERSION))patch.tokenVision=true;
-  if(scene.fog?.mode!==FOG_MODE && (force || version<SCENE_CONFIG_VERSION))patch['fog.mode']=FOG_MODE;
-  if(Object.keys(patch).length)await scene.update(patch);
-  if(version<SCENE_CONFIG_VERSION)await scene.setFlag(MOD,'sceneConfigVersion',SCENE_CONFIG_VERSION);
-  return Object.keys(patch).length>0;
+
+function sceneLevel(scene) {
+  return scene.initialLevel ?? scene.levels?.contents?.[0] ?? null;
 }
-async function repairScenes({force=false}={}){
-  if(!game.user?.isGM)throw new Error('Somente o Handler pode atualizar as cenas.');
-  if(game.system?.id!=='deltagreen')throw new Error('Requer o sistema Delta Green.');
-  const data=await loadData();
-  let updated=0;
-  for(const entry of data.scenes){
-    const scene=fromKey(game.scenes,entry.id);
-    if(scene && await updateSceneSettings(scene,entry,{force}))updated++;
+
+/** Garante um Level com background sem alterar os demais Levels do mundo. */
+async function ensureSceneLevel(scene, image) {
+  let level = sceneLevel(scene);
+  if (level) return level;
+
+  const created = await scene.createEmbeddedDocuments('Level', [{
+    name: 'Superfície — Operação Véspera',
+    elevation: {bottom: 0, top: 20},
+    background: {src: image}
+  }]);
+  level = created?.[0] ?? null;
+  if (!level) throw Error(`Não foi possível criar um nível na cena "${scene.name}".`);
+  // A propriedade initialLevel é o ID do nível, diferentemente do getter
+  // scene.initialLevel, que retorna o documento.
+  if (!scene.initialLevel) await scene.update({initialLevel: level.id});
+  return level;
+}
+
+async function updateSceneSettings(scene, entry, {force=false}={}) {
+  if (!scene || scene.getFlag(MOD, 'key') !== entry.id) return false;
+
+  const expected = desiredSceneSettings(entry);
+  const version = Number(scene.getFlag(MOD, 'sceneConfigVersion') || 0);
+  let updated = false;
+
+  const level = await ensureSceneLevel(scene, expected.image);
+  const current = level.background?.src ?? '';
+  // Atualiza sempre se estiver vazio; migra automaticamente versões anteriores;
+  // após migrar, preserva qualquer fundo personalizado não vazio do Handler.
+  if (current !== expected.image && (force || version < SCENE_CONFIG_VERSION || !current)) {
+    await level.update({'background.src': expected.image});
+    updated = true;
   }
-  if(updated)ui.notifications.info(`VÉSPERA: ${updated} cena(s) atualizada(s) com mapa e fog.`);
-  console.info('[VÉSPERA] Migração das cenas:',{updated,checked:data.scenes.length});
-  return {updated,checked:data.scenes.length};
+
+  const patch = {};
+  if (scene.tokenVision !== true && (force || version < SCENE_CONFIG_VERSION))
+    patch.tokenVision = true;
+  if (scene.fog?.mode !== expected.fogMode && (force || version < SCENE_CONFIG_VERSION))
+    patch['fog.mode'] = expected.fogMode;
+  if (Object.keys(patch).length) {
+    await scene.update(patch);
+    updated = true;
+  }
+
+  // Validação após a gravação: não marca a migração se a imagem continuar ausente.
+  const actual = sceneLevel(scene)?.background?.src;
+  if (actual !== expected.image && (!actual || force || version < SCENE_CONFIG_VERSION)) {
+    throw Error(`Background da cena "${scene.name}" não foi gravado no nível (${actual || 'vazio'}).`);
+  }
+  if (version < SCENE_CONFIG_VERSION)
+    await scene.setFlag(MOD, 'sceneConfigVersion', SCENE_CONFIG_VERSION);
+  return updated;
+}
+
+async function repairScenes({force=false}={}) {
+  if (!game.user?.isGM) throw Error('Somente o Handler pode atualizar as cenas.');
+  if (game.system?.id !== 'deltagreen') throw Error('Requer um mundo Delta Green.');
+  const data = await loadData();
+  let updated = 0, checked = 0;
+  const failures = [];
+  for (const entry of data.scenes) {
+    const scene = fromKey(game.scenes, entry.id);
+    if (!scene) continue;
+    checked++;
+    try {
+      if (await updateSceneSettings(scene, entry, {force})) updated++;
+    } catch (error) {
+      console.error('[VÉSPERA] Erro ao atualizar Level/background:', scene.name, error);
+      failures.push(`${scene.name}: ${error.message}`);
+    }
+  }
+  if (updated) ui.notifications.info(`VÉSPERA: ${updated} cena(s) receberam os fundos automaticamente.`);
+  if (failures.length) ui.notifications.error(`VÉSPERA: ${failures.length} cena(s) não puderam ser corrigidas. Consulte F12.`);
+  console.info('[VÉSPERA] Verificação automática dos Levels:', {updated, checked, failures});
+  return {updated, checked, failures};
 }
 async function makeScenes(data,dir,journals,actors,counts){
   const map=new Map();
@@ -117,13 +171,14 @@ async function makeScenes(data,dir,journals,actors,counts){
       scene=await Scene.create({
         name:entry.name,folder:dir.id,flags:modFlag(entry.id),navigation:true,
         width:entry.width,height:entry.height,padding:0,
-        background:{src:asset(entry.image)},
+        // Em Foundry v14 a imagem precisa estar em um Level; o reparo abaixo
+        // também funciona caso o core crie automaticamente um nível vazio.
         grid:{type:entry.grid?1:0,size:64,distance:1.5,units:'m',alpha:0.12},
-        tokenVision:true,fog:{mode:FOG_MODE},darkness:0
+        tokenVision:true,fog:{mode:FOG_MODE}
       });
       counts.scenes++;
     }
-    // Cenas da versão anterior recebem background e fog automaticamente.
+    // Cenas novas e antigas recebem um Level com o mapa como background.
     await updateSceneSettings(scene,entry);
     map.set(entry.id,scene);
     const page=scenePage(entry.id,journals);
@@ -177,7 +232,7 @@ async function openMapBackgrounds(){
   const data=await loadData();
   const targets=data.scenes.map(entry=>({entry,scene:fromKey(game.scenes,entry.id)})).filter(x=>x.scene);
   if(!targets.length){ui.notifications.warn('Importe primeiro as cenas da Operação Véspera.');return;}
-  const changed=targets.filter(({entry,scene})=>scene.background?.src!==asset(entry.image));
+  const changed=targets.filter(({entry,scene})=>sceneLevel(scene)?.background?.src!==asset(entry.image));
   const ok=await foundry.applications.api.DialogV2.confirm({
     window:{title:'VÉSPERA — Aplicar mapas e fog'},modal:true,rejectClose:false,
     content:`<p><strong>${targets.length}</strong> cenas identificadas; <strong>${changed.length}</strong> background(s) diferentes do mapa oficial.</p>
@@ -286,7 +341,8 @@ Hooks.once('ready',async()=>{
   if(!game.user?.isGM||game.system?.id!=='deltagreen')return;
   try{
     // Migra inclusive campanhas importadas antes desta versão, sem recriar atores.
-    await repairScenes();
+    const migration = await repairScenes();
+    if (migration.failures?.length) console.warn('[VÉSPERA] Algumas cenas ainda precisam de correção:', migration.failures);
     // Disponibiliza as novas macros também para mundos importados em versões antigas.
     await makeMacro({macros:0});
     if(game.i18n?.lang!=='pt-BR')ui.notifications.warn('VÉSPERA: as fichas estão em inglês? Selecione Português (Brasil) em Configurar Configurações → Idioma; use a macro VÉSPERA — Idioma português (Brasil).');
