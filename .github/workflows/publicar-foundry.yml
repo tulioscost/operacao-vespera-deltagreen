@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       versao:
-        description: 'Versao da publicacao (exemplo: v1.0.0)'
+        description: 'Versao da publicacao (exemplo: v1.0.5)'
         required: true
-        default: 'v1.0.0'
+        default: 'v1.0.5'
         type: string
 
 permissions:
@@ -17,7 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Preparar manifesto e arquivo do Foundry
+      - name: Validar fontes e recursos
+        run: |
+          set -euo pipefail
+          python3 tests/check_package.py
+      - name: Preparar manifesto e pacote de instalacao
         env:
           TAG: ${{ inputs.versao }}
           REPO: ${{ github.repository }}
@@ -29,26 +33,48 @@ jobs:
           from pathlib import Path
           tag=os.environ['TAG']
           if not re.fullmatch(r'v\d+\.\d+\.\d+',tag):
-              raise SystemExit('Use versao no formato v1.0.0')
-          repo=os.environ['REPO']
+              raise SystemExit('Use a versao no formato v1.0.5')
           p=Path('module.json')
           doc=json.loads(p.read_text(encoding='utf-8'))
           doc['version']=tag[1:]
-          doc['url']=f'https://github.com/{repo}'
-          doc['manifest']=f'https://github.com/{repo}/releases/latest/download/module.json'
-          doc['download']=f'https://github.com/{repo}/releases/download/{tag}/operacao-vespera-deltagreen.zip'
+          base=f'https://github.com/{os.environ["REPO"]}'
+          doc['url']=base
+          doc['manifest']=base+'/releases/latest/download/module.json'
+          doc['download']=base+'/releases/download/'+tag+'/operacao-vespera-deltagreen.zip'
           p.write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PYTHON
           mkdir -p dist
           cp module.json dist/module.json
-          zip -q -r dist/operacao-vespera-deltagreen.zip module.json README.md LICENSE.txt scripts styles data assets
+          zip -q -r dist/operacao-vespera-deltagreen.zip module.json README.md LICENSE.txt scripts styles lang data assets
           python3 - <<'PYTHON'
-          import zipfile
-          p='dist/operacao-vespera-deltagreen.zip'
-          with zipfile.ZipFile(p) as z:
-              assert 'module.json' in z.namelist(), 'Manifesto precisa estar na raiz do ZIP'
-              assert z.testzip() is None, 'ZIP danificado'
-          print('Pacote validado.')
+          from pathlib import Path
+          import json, zipfile
+          path=Path('dist/operacao-vespera-deltagreen.zip')
+          with zipfile.ZipFile(path) as z:
+              names={i.filename for i in z.infolist() if not i.is_dir()}
+              required={'module.json','scripts/importer.mjs','styles/vespera.css','data/vespera.json','lang/pt-BR.json','README.md','LICENSE.txt'}
+              missing=required-names
+              if missing:
+                  raise SystemExit('ARQUIVOS AUSENTES NO ZIP: '+', '.join(sorted(missing)))
+              manifest=json.loads(z.read('module.json'))
+              for lang in manifest.get('languages',[]):
+                  if lang['path'] not in names:
+                      raise SystemExit('TRADUCAO AUSENTE: '+lang['path'])
+              data=json.loads(z.read('data/vespera.json'))
+              for scene in data.get('scenes',[]):
+                  if scene['image'] not in names:
+                      raise SystemExit('MAPA AUSENTE: '+scene['image'])
+              for group in ('agents','npcs'):
+                  for entry in data.get(group,[]):
+                      for field in ('img','token'):
+                          value=entry.get(field,'')
+                          if value.startswith('assets/') and value not in names:
+                              raise SystemExit('IMAGEM AUSENTE: '+value)
+              if z.testzip() is not None:
+                  raise SystemExit('ZIP CORROMPIDO')
+              if not manifest['download'].endswith('/'+path.name):
+                  raise SystemExit('ENDERECO DE DOWNLOAD INCONSISTENTE')
+              print('ZIP validado:',len(names),'arquivos,',path.stat().st_size,'bytes, todos os assets referenciados presentes')
           PYTHON
       - name: Criar release e anexar manifesto e ZIP
         env:
@@ -64,4 +90,4 @@ jobs:
           gh release create "$TAG" dist/module.json dist/operacao-vespera-deltagreen.zip \
             --target "$GITHUB_SHA" \
             --title "Operacao Vespera $TAG" \
-            --notes "Modulo de aventura para Foundry VTT v14 e sistema Delta Green. Instalacao via URL de manifesto (module.json) da ultima release."
+            --notes "Correcao do pacote de instalacao: inclui localizacao pt-BR; valida manifesto, cenas, retratos e integridade do arquivo ZIP. Requer Foundry VTT 14, Delta Green, Dice Tray e Dice So Nice."
