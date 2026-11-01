@@ -1,0 +1,312 @@
+{
+  "DG": {
+    "Skills": {
+      "Tooltip": {
+        "flight": "Voar ou manobrar no ar usando asas ou meios sobrenaturais.",
+        "ritual": "Realizar rituais ocultos; cada ritual constitui uma perícia separada."
+      },
+      "ToggleEditDeleteSkills": "Editar ou excluir perícias",
+      "EditDeleteTypedSkills": "Editar ou excluir perícias especializadas"
+    },
+    "Navigation": {
+      "Agent": {
+        "combat": "Combate",
+        "personal": "Pessoal",
+        "effects": "Efeitos",
+        "LeftBar": {
+          "rest": "Descansar",
+          "sanity": "Sanidade"
+        }
+      },
+      "Item": {
+        "effects": "Efeitos"
+      }
+    },
+    "Roll": {
+      "CannotRollStat": "Não é possível realizar um teste com atributo igual a 0."
+    },
+    "Physical": {
+      "Exhaust": "Aplicar exaustão",
+      "Rest": "Descansar",
+      "Stimulants": "Estimulantes",
+      "SuppressExhaustion": "Exaustão suprimida",
+      "ExhaustionEffectName": "Exaustão",
+      "StimulantsEffectName": "Estimulantes",
+      "ExhaustDialogTitle": "Exaurir agente",
+      "RollWillpowerLoss": "Rolar perda de Pontos de Vontade",
+      "StimulantsDialogTitle": "Consumir estimulantes",
+      "StimulantsRegular": "Estimulantes leves",
+      "StimulantsRegularExplanation": "Fumar continuamente, tomar café ou usar outros estimulantes leves suprime a exaustão por 1D6 horas.",
+      "StimulantsHard": "Drogas fortes",
+      "StimulantsHardExplanation": "Drogas fortes, embora ilegais, suprimem a exaustão por 2D6 horas.",
+      "Tooltip": {
+        "SuppressExhaustion": "Enquanto esta opção estiver marcada, as penalidades por exaustão não se aplicam aos testes."
+      },
+      "StimulantsNotExhaustedWarning": "{name} não está exausto. Consumir estimulantes não surtirá efeito!",
+      "Chat": {
+        "ExhaustedRollLabel": "<b>Exausto.</b><br>Perdeu {willpowerChange}.",
+        "RestedRollLabel": "<b>Descansou.</b><br>Recuperou {willpowerChange}.",
+        "RestedRollLabelExhausted": "<b>Descansou.</b><br>Recuperou {willpowerChange}.<br><b>Não está mais exausto.</b>",
+        "Willpower": "Vontade",
+        "WillpowerAmount": "{amount} {willpower}",
+        "WillpowerTooltip": "<b>Pontos de Vontade:</b> {current}/{max}",
+        "StimulantsRegularRollLabel": "<b>Estimulantes leves.</b><br>Exaustão suprimida por <b>{hours}</b> horas.<br>Não é possível dormir durante esse período.",
+        "StimulantsHardRollLabel": "<b>Drogas fortes.</b><br>Exaustão suprimida por <b>{hours}</b> horas.<br><b>Não é possível dormir</b> durante esse período."
+      }
+    },
+    "ActiveEffects": {
+      "SheetLabel": "Efeito ativo de Delta Green",
+      "DefaultName": "Efeito ativo",
+      "Add": "Adicionar efeito ativo",
+      "Temporary": "Efeitos temporários",
+      "Permanent": "Efeitos permanentes",
+      "Source": "Origem",
+      "None": "Nenhum",
+      "Toggle": "Ativar ou desativar efeito ativo",
+      "Edit": "Editar efeito ativo",
+      "Delete": "Excluir efeito ativo",
+      "SelectAttribute": "Selecionar atributo…",
+      "TransferWhenEquipped": "Efeitos transferidos só se aplicam ao agente enquanto este item estiver equipado.",
+      "TransferWhenAcuteEpisode": "Efeitos transferidos só se aplicam ao agente durante um episódio agudo.",
+      "SuppressedNotEquipped": "Inativo — item não equipado",
+      "SuppressedAcuteEpisode": "Inativo — episódio agudo desativado",
+      "SuppressedUnsupportedItem": "Inativo — incompatível com este tipo de item",
+      "Groups": {
+        "Statistics": "Atributos",
+        "Resources": "Recursos",
+        "RollTargets": "Alvos dos testes"
+      },
+      "Fields": {
+        "AllSkills": "Todas as perícias",
+        "SanityRolls": "Testes de Sanidade",
+        "StatisticRolls": "Testes de Atributo",
+        "MaxHP": "PV máximos",
+        "MaxWP": "Pontos de Vontade máximos",
+        "MaxSanity": "Sanidade máxima"
+      }
+    },
+    "Mental": {
+      "Tooltip": {
+        "Checkbox": {
+          "Violence": "Ao perder SAN devido à violência, sem sofrer insanidade temporária nem atingir o ponto de ruptura, marque um incidente até adquirir adaptação. Manual do Agente, página 73.",
+          "Helplessness": "Ao perder SAN por desamparo, sem sofrer insanidade temporária nem atingir o ponto de ruptura, marque um incidente até adquirir adaptação. Manual do Agente, página 73."
+        }
+      }
+    },
+    "Gear": {
+      "SelectCompendium": "Selecionar compêndio"
+    },
+    "Bonds": {
+      "MaxScore": "Máx.",
+      "MaxScoreTooltip": "O valor de um Vínculo nunca pode exceder o CAR do agente.",
+      "IncreaseScore": "Aumentar valor do Vínculo",
+      "DecreaseScore": "Diminuir valor do Vínculo"
+    },
+    "Tooltip": {
+      "RollTarget": {
+        "Target": "Alvo: {value}%",
+        "BaseTarget": "Alvo básico",
+        "FinalTarget": "Alvo final",
+        "RollModifier": "Modificador do teste"
+      }
+    },
+    "ItemWindow": {
+      "Motivations": {
+        "AcuteEpisode": "Episódio agudo",
+        "AcuteEpisodeTooltip": "Enquanto marcada, esta opção aplica ao agente os efeitos ativos transferidos por esta motivação."
+      },
+      "Profession": {
+        "Description": "Descrição",
+        "SkillsTab": "Perícias",
+        "Name": "Nome da profissão",
+        "Bonds": "Vínculos",
+        "BondsTooltip": "Número de espaços de Vínculo concedidos ao atribuir esta profissão a um agente (1 a 5).",
+        "AutomaticSkills": "Perícias automáticas",
+        "OptionSkills": "Perícias opcionais",
+        "OptionPicks": "Quantidade de escolhas",
+        "AddSkill": "Adicionar perícia",
+        "AddSkillTitle": "Adicionar perícia à profissão",
+        "RemoveSkill": "Remover perícia",
+        "Skill": "Perícia",
+        "SelectSkill": "Selecione uma perícia…",
+        "Rating": "Valor (%)",
+        "SkillType": "Tipo de perícia",
+        "SkillTypePlaceholder": "Ex.: alemão, pintura",
+        "TypedSkillRequired": "Informe um tipo de perícia antes de adicioná-la.",
+        "ChooseOne": "Escolher uma",
+        "ChooseOneHint": "O jogador dará um nome a esta perícia quando a profissão for aplicada ao agente.",
+        "TypedSkillNameConflict": "Outra perícia automática ou opcional desta categoria já usa o nome \"{name}\"."
+      },
+      "Tome": {
+        "NamePlaceholder": "Nome"
+      }
+    },
+    "ModifySkillRollDialogue": {
+      "QuickModifiersHeader": "Modificadores rápidos",
+      "QuickModifiersHint": "Clique em uma das opções para aplicar o ajuste predefinido e realizar o teste imediatamente.",
+      "ModifierMuchHarder": "Torna o teste muito mais difícil",
+      "ModifierHarder": "Torna o teste mais difícil",
+      "ModifierEasier": "Torna o teste mais fácil",
+      "ModifierMuchEasier": "Torna o teste muito mais fácil",
+      "CustomModifierHeader": "Modificador personalizado",
+      "CustomModifierHint": "Para ajustar o alvo do teste, insira um valor positivo ou negativo e clique no botão Rolar.",
+      "InvalidModifier": "Insira um modificador válido para rolar."
+    },
+    "DamageOrLethalityRoll": {
+      "Title": "Rolar dano ou letalidade",
+      "Intro": "Esta arma possui dano e letalidade. Escolha qual deles será rolado.",
+      "RollDamage": "Rolar dano",
+      "RollLethality": "Rolar letalidade"
+    },
+    "EditStats": {
+      "Title": "Editar atributos",
+      "Button": "Editar atributos",
+      "DistinguishingFeature": "Característica marcante"
+    },
+    "Sheet": {
+      "BlockHeaders": {
+        "SpecialTraining": "TREINAMENTO ESPECIAL",
+        "Adaptations": "Adaptações",
+        "ScenarioInformation": "INFORMAÇÕES DO CENÁRIO",
+        "Bonds": "VÍNCULOS"
+      }
+    },
+    "AgentSheet": {
+      "RenameProfession": {
+        "Title": "Renomear profissão",
+        "Tooltip": "Clique para renomear a profissão"
+      }
+    },
+    "Profession": {
+      "AlreadyAssigned": "Este agente já possui uma profissão. Não é possível atribuir outra.",
+      "Dialog": {
+        "Title": "Criação de personagem",
+        "Tab": {
+          "SkillOptions": "Seleção de perícias",
+          "BonusSkills": "Perícias de bônus",
+          "Bonds": "Vínculos"
+        },
+        "Skill": "Perícia",
+        "Value": "Valor",
+        "SkillTotalsHeader": "Total das perícias",
+        "SkillTotalsHint": "As perícias verdes foram aumentadas pela profissão. Passe o cursor sobre uma perícia para ler a descrição ou consulte o Manual do Agente.",
+        "SkillsOptionsHeader": "Seleção de perícias ({picks} escolhas)",
+        "BonusSkillsIntro": "Selecione perícias nos menus para acrescentar 20% ao total. É possível selecionar a mesma perícia mais de uma vez. Sobrenatural não pode ser selecionada e nenhuma perícia pode ultrapassar 80% na criação.",
+        "BonusSkillWasteTooHigh": "{skill} não pode ultrapassar 80%. Escolha outra perícia de bônus.",
+        "BondsIntro": "Vínculos são relações importantes na vida do agente, como familiares, amigos e pessoas queridas. Eles podem amortecer a perda de SAN, mas isso prejudica a relação. Seu valor inicial é igual ao CAR.",
+        "BondFieldLabel": "Vínculo {number}",
+        "SelectSkill": "Selecione uma perícia…",
+        "SkillTypePlaceholder": "Tipo ou especialização",
+        "Submit": "Confirmar",
+        "CapWarning": "{skill} seria elevada a {attempted}, mas o limite durante a criação é 80; {waste} pontos de perícia serão desperdiçados.",
+        "DuplicateTypedName": "Detectadas especializações duplicadas de {type} ({name}). Escolha nomes diferentes.",
+        "ChooseOneNamesHeader": "Nomear especializações de perícias",
+        "ChooseOneNameLabel": "{group} — especialização",
+        "OptionPicksRequired": "Selecione exatamente {picks} perícia(s) opcional(is).",
+        "BondNameRequired": "Informe um nome para cada Vínculo.",
+        "BondRelationshipRequired": "Informe uma relação para cada Vínculo.",
+        "BonusSkillRequired": "Selecione todas as {count} perícias de bônus.",
+        "BonusSkillTypeRequired": "Informe uma especialização para cada perícia de bônus especializada.",
+        "TypedNameRequired": "Informe um nome para cada perícia do tipo {type}."
+      },
+      "ChooseOnePlaceholder": "escolha uma"
+    },
+    "DamagedVeterans": {
+      "Dialog": {
+        "Title": "Veteranos marcados",
+        "Intro": "Decida se o personagem é recruta recente ou agente experiente da Delta Green. Se for experiente, escolha uma opção para aplicar as modificações antes de começar a jogar.",
+        "FreshRecruit": {
+          "Label": "Recruta recente:",
+          "Body": "Seu personagem ainda não faz parte da Delta Green ou acabou de ingressar. Comece sem modificações."
+        },
+        "ExtremeViolence": {
+          "Label": "Violência extrema:",
+          "Body": "+10 em Ocultismo, -5 em SAN, -3 em CAR e -3 em todos os Vínculos. Comece adaptado à Violência."
+        },
+        "Captivity": {
+          "Label": "Cativeiro ou prisão:",
+          "Body": "+10 em Ocultismo, -5 em SAN e -3 em POD. Comece adaptado ao Desamparo."
+        },
+        "HardExperience": {
+          "Label": "Experiência difícil:",
+          "Body": "+10 em Ocultismo, -5 em SAN e remova um Vínculo. Ganhe +10 em quaisquer cinco perícias, exceto Sobrenatural, até o máximo de 90%."
+        },
+        "ThingsMan": {
+          "Label": "Coisas que a humanidade não deveria conhecer:",
+          "Body": "+10 em Sobrenatural, +20 em Ocultismo e perda de SAN igual ao POD. Comece com um transtorno causado pelo Sobrenatural. Redefina o ponto de ruptura."
+        },
+        "SelectionRequired": "Selecione uma opção de veterano marcado antes de confirmar."
+      },
+      "ThingsMan": {
+        "Dialog": {
+          "Title": "Coisas que a humanidade não deveria conhecer",
+          "Intro": "Escolha um transtorno com o qual começar. As descrições estão nas páginas 71–72 do Manual do Agente.",
+          "SelectionRequired": "Selecione um transtorno antes de confirmar."
+        },
+        "Disorder": {
+          "Amnesia": "Amnésia",
+          "DepersonalizationDisorder": "Transtorno de despersonalização",
+          "Depression": "Depressão",
+          "DissociativeIdentityDisorder": "Transtorno dissociativo de identidade",
+          "Fugues": "Fugas dissociativas",
+          "Megalomania": "Megalomania",
+          "Paranoia": "Paranoia",
+          "SleepDisorder": "Transtorno do sono"
+        },
+        "MotivationName": "Descrever motivação"
+      }
+    },
+    "HardExperience": {
+      "Dialog": {
+        "Title": "Experiência difícil",
+        "BonusIntro": "Selecione perícias nos menus para acrescentar 10% ao total. Uma perícia pode ser escolhida várias vezes. Sobrenatural não pode ser selecionada e nenhuma perícia pode ultrapassar 90%.",
+        "BondRemovalHeader": "Remover um Vínculo",
+        "BondRemovalIntro": "Escolha um Vínculo do agente para remover.",
+        "BondRemovalRequired": "Selecione um Vínculo para remover antes de confirmar.",
+        "BonusSkillRequired": "Selecione uma perícia em cada um dos cinco menus de bônus.",
+        "BonusSkillWasteTooHigh": "{skill} não pode ultrapassar 90%. Escolha outra perícia de bônus."
+      }
+    },
+    "ProfessionSetup": {
+      "PickStatistics": {
+        "Title": "Escolher atributos",
+        "Intro": "Escolha como definir os atributos do agente antes de selecionar as perícias.",
+        "RollStats": "Rolar atributos",
+        "RollStatsTooltip": "Role 4D6, descarte o menor dado e distribua os resultados como desejar.",
+        "AssignStats": "Distribuir atributos",
+        "AssignStatsTooltip": "Distribua 72 pontos entre os atributos como desejar.",
+        "LeaveStatsAlone": "Manter meus atributos atuais!"
+      },
+      "GoBack": "Voltar",
+      "RollStats": {
+        "Title": "Rolar atributos",
+        "PoolHeader": "Arraste cada resultado para um atributo.",
+        "Submit": "Confirmar",
+        "ChatLabel": "Rolagens de atributos (4D6, descarte o menor)"
+      },
+      "AssignStats": {
+        "Title": "Distribuir atributos",
+        "PointsRemaining": "Pontos restantes: {remaining}",
+        "Submit": "Confirmar"
+      }
+    },
+    "Messages": {
+      "RollDamage": "Rolagem de dano",
+      "RollLethality": "Rolagem de letalidade"
+    }
+  },
+  "TYPES": {
+    "Item": {
+      "profession": "Profissão"
+    }
+  },
+  "VESPERA": {
+    "ModuleTitle": "Operação Véspera — O Sol Debaixo da Pele",
+    "ImportStarted": "VÉSPERA: importação iniciada...",
+    "ImportComplete": "VÉSPERA: importação concluída; abra Cenas, Atores, Diários e Tabelas.",
+    "UpdatedScene": "VÉSPERA: mapas e fog aplicados às cenas já importadas.",
+    "MissingAssets": "VÉSPERA: verifique os mapas na pasta assets/maps.",
+    "RequiredModules": "Este módulo requer Dice Tray e Dice So Nice ativos.",
+    "TranslationNote": "Complemento de tradução para o sistema Delta Green; utilize Português (Brasil) nas configurações do Foundry."
+  }
+}

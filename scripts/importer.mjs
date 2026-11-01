@@ -1,6 +1,9 @@
 /** OPERAÇÃO VÉSPERA | Foundry VTT 14, Delta Green 2.0.1 */
 const MOD='operacao-vespera-deltagreen';
 const asset=path=>`modules/${MOD}/${path}`;
+// Foundry VTT v14: modo INDIVIDUAL (1) mantém o fog explorado por usuário.
+const FOG_MODE=1;
+const SCENE_CONFIG_VERSION=2;
 let busy=false;
 Hooks.once('init',()=>game.settings.register(MOD,'imported',{name:'VÉSPERA: conteúdo instalado',scope:'world',config:false,type:Boolean,default:false}));
 const modFlag=key=>({[MOD]:{key}});
@@ -68,6 +71,44 @@ function scenePage(id,journals){
   else prefix='Cena C';
   return journals.get('cenas')?.pages.contents.find(p=>p.name.startsWith(prefix))||null;
 }
+/** Configuração de cenas do módulo. Migração idempotente sem apagar exploração existente. */
+function desiredSceneSettings(entry){
+  return {
+    'background.src':asset(entry.image),
+    tokenVision:true,
+    'fog.mode':FOG_MODE
+  };
+}
+async function updateSceneSettings(scene,entry,{force=false}={}){
+  if(!scene || scene.getFlag(MOD,'key')!==entry.id)return false;
+  const expected=desiredSceneSettings(entry);
+  const patch={};
+  const version=Number(scene.getFlag(MOD,'sceneConfigVersion')||0);
+  if(scene.background?.src!==expected['background.src']) {
+    // O plano de fundo do módulo deve estar presente na cena; futuras alterações
+    // manuais são preservadas após a primeira migração para o esquema v1.0.2.
+    if(force || version<SCENE_CONFIG_VERSION || !scene.background?.src)
+      patch['background.src']=expected['background.src'];
+  }
+  if(scene.tokenVision!==true && (force || version<SCENE_CONFIG_VERSION))patch.tokenVision=true;
+  if(scene.fog?.mode!==FOG_MODE && (force || version<SCENE_CONFIG_VERSION))patch['fog.mode']=FOG_MODE;
+  if(Object.keys(patch).length)await scene.update(patch);
+  if(version<SCENE_CONFIG_VERSION)await scene.setFlag(MOD,'sceneConfigVersion',SCENE_CONFIG_VERSION);
+  return Object.keys(patch).length>0;
+}
+async function repairScenes({force=false}={}){
+  if(!game.user?.isGM)throw new Error('Somente o Handler pode atualizar as cenas.');
+  if(game.system?.id!=='deltagreen')throw new Error('Requer o sistema Delta Green.');
+  const data=await loadData();
+  let updated=0;
+  for(const entry of data.scenes){
+    const scene=fromKey(game.scenes,entry.id);
+    if(scene && await updateSceneSettings(scene,entry,{force}))updated++;
+  }
+  if(updated)ui.notifications.info(`VÉSPERA: ${updated} cena(s) atualizada(s) com mapa e fog.`);
+  console.info('[VÉSPERA] Migração das cenas:',{updated,checked:data.scenes.length});
+  return {updated,checked:data.scenes.length};
+}
 async function makeScenes(data,dir,journals,actors,counts){
   const map=new Map();
   for(const entry of data.scenes){
@@ -78,10 +119,12 @@ async function makeScenes(data,dir,journals,actors,counts){
         width:entry.width,height:entry.height,padding:0,
         background:{src:asset(entry.image)},
         grid:{type:entry.grid?1:0,size:64,distance:1.5,units:'m',alpha:0.12},
-        tokenVision:false,fogExploration:false,darkness:0
+        tokenVision:true,fog:{mode:FOG_MODE},darkness:0
       });
       counts.scenes++;
     }
+    // Cenas da versão anterior recebem background e fog automaticamente.
+    await updateSceneSettings(scene,entry);
     map.set(entry.id,scene);
     const page=scenePage(entry.id,journals);
     if(page&&!scene.notes.some(n=>n.getFlag(MOD,'key')===`note:${entry.id}`)){
@@ -183,8 +226,11 @@ async function openImporter(){
 }
 Hooks.once('ready',async()=>{
   const mod=game.modules.get(MOD);
-  if(mod)mod.api={importAll,openImporter};
+  if(mod)mod.api={importAll,openImporter,repairScenes};
   if(!game.user?.isGM||game.system?.id!=='deltagreen')return;
-  try{if(!game.settings.get(MOD,'imported'))await openImporter();}
-  catch(error){console.warn('[VÉSPERA] Janela inicial não aberta:',error);}
+  try{
+    // Migra inclusive campanhas importadas antes desta versão, sem recriar atores.
+    await repairScenes();
+    if(!game.settings.get(MOD,'imported'))await openImporter();
+  }catch(error){console.warn('[VÉSPERA] Inicialização/migração:',error);}
 });

@@ -39,3 +39,15 @@ Hospede o conteúdo da pasta do módulo em seu repositório e publique o ZIP com
 
 ## Fontes e direitos
 Módulo de aventura autoral não oficial. Não inclui obras, texto de regras ou compêndios comerciais de Delta Green. Verifique direitos de uso antes de redistribuir assets além da sua mesa privada.
+
+
+## Atualização 1.0.2 — cenas, fog e tradução
+
+- Nas **nove cenas**, os mapas de `assets/maps/` são definidos automaticamente como imagem de fundo (`background.src`).
+- **Visão por token** habilitada (`tokenVision: true`) e **exploração individual do fog** habilitada (`fog.mode: 1`) no Foundry 14. O mapa regional também recebe essas configurações.
+- Na primeira abertura do mundo como Handler após a atualização, cenas já importadas com as flags do módulo são **migradas automaticamente**, preservando as explorações já registradas. Modificações manuais feitas após a migração não são substituídas nas próximas aberturas.
+- Para reaplicar voluntariamente as configurações em todas as cenas próprias do módulo, execute no console do navegador como Handler: `await game.modules.get('operacao-vespera-deltagreen').api.repairScenes({force:true})`. Isso substitui os backgrounds dessas cenas.
+- Os módulos **Dice Tray** (`dice-calculator`) e **Dice So Nice!** (`dice-so-nice`) são dependências obrigatórias declaradas no manifesto. Instale versões compatíveis com o Foundry v14 e habilite ambos no mundo.
+- O sistema **Delta Green** já distribui pt-BR; o arquivo `lang/pt-BR.json` neste módulo **complementa 193 chaves ausentes** na tradução do sistema, sem sobrescrever seus arquivos. Em **Configuração → Configurações Básicas → Idioma**, selecione **Português (Brasil)** e recarregue a página. A tradução pode mudar se uma versão futura do sistema alterar suas chaves.
+- **Fog ativo não significa paredes automáticas**: o campo de visão seguirá os tokens dos jogadores; adicione paredes/portas/iluminação se desejar impedir a visão através de ambientes fechados. Jogadores precisam controlar um token com visão habilitada; sem isso, a cena pode aparecer escura/oculta.
+
