@@ -1,0 +1,67 @@
+name: Publicar modulo no Foundry
+
+on:
+  workflow_dispatch:
+    inputs:
+      versao:
+        description: 'Versao da publicacao (exemplo: v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar manifesto e arquivo do Foundry
+        env:
+          TAG: ${{ inputs.versao }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PYTHON'
+          import json, os, re
+          from pathlib import Path
+          tag=os.environ['TAG']
+          if not re.fullmatch(r'v\d+\.\d+\.\d+',tag):
+              raise SystemExit('Use versao no formato v1.0.0')
+          repo=os.environ['REPO']
+          p=Path('module.json')
+          doc=json.loads(p.read_text(encoding='utf-8'))
+          doc['version']=tag[1:]
+          doc['url']=f'https://github.com/{repo}'
+          doc['manifest']=f'https://github.com/{repo}/releases/latest/download/module.json'
+          doc['download']=f'https://github.com/{repo}/releases/download/{tag}/operacao-vespera-deltagreen.zip'
+          p.write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PYTHON
+          mkdir -p dist
+          cp module.json dist/module.json
+          zip -q -r dist/operacao-vespera-deltagreen.zip module.json README.md LICENSE.txt scripts styles data assets
+          python3 - <<'PYTHON'
+          import zipfile
+          p='dist/operacao-vespera-deltagreen.zip'
+          with zipfile.ZipFile(p) as z:
+              assert 'module.json' in z.namelist(), 'Manifesto precisa estar na raiz do ZIP'
+              assert z.testzip() is None, 'ZIP danificado'
+          print('Pacote validado.')
+          PYTHON
+      - name: Criar release e anexar manifesto e ZIP
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.versao }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Ja existe uma release $TAG. Use nova versao para publicar atualizacoes."
+            exit 1
+          fi
+          gh release create "$TAG" dist/module.json dist/operacao-vespera-deltagreen.zip \
+            --target "$GITHUB_SHA" \
+            --title "Operacao Vespera $TAG" \
+            --notes "Modulo de aventura para Foundry VTT v14 e sistema Delta Green. Instalacao via URL de manifesto (module.json) da ultima release."
